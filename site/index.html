@@ -787,6 +787,7 @@ body.is-loading{overflow:hidden!important}
   document.body.classList.add('is-loading');
   let displayed=0, ready=document.readyState==='complete', start=performance.now(), finished=false;
   addEventListener('load',()=>{ready=true},{once:true});
+  setTimeout(()=>{ready=true},4200);
   function loaderTick(now){
     if(!loader||finished)return;
     const elapsed=now-start;
@@ -813,16 +814,19 @@ body.is-loading{overflow:hidden!important}
   // Desktop inertial scrolling; touch/keyboard and reduced motion remain native.
   const smooth=!reduce && matchMedia('(pointer:fine)').matches && innerWidth>820;
   if(smooth){
-    let target=scrollY,current=scrollY,running=true,programmatic=false;
+    let target=scrollY,current=scrollY,running=true,internalScroll=false,lastWheel=0;
     const max=()=>Math.max(0,document.documentElement.scrollHeight-innerHeight);
     const clamp=(v)=>Math.max(0,Math.min(max(),v));
     addEventListener('wheel',e=>{
       if(document.body.classList.contains('is-loading')){e.preventDefault();return}
       const el=e.target.closest?.('input,textarea,select,[data-native-scroll]');
       if(el)return;
-      e.preventDefault(); target=clamp(target+e.deltaY*.92);
+      e.preventDefault(); lastWheel=performance.now(); target=clamp(target+e.deltaY*.92);
     },{passive:false});
-    addEventListener('scroll',()=>{if(!programmatic){current=target=scrollY}},{passive:true});
+    addEventListener('scroll',()=>{
+      if(internalScroll || performance.now()-lastWheel<140)return;
+      current=target=scrollY;
+    },{passive:true});
     addEventListener('resize',()=>{target=clamp(target);current=clamp(current)});
     document.addEventListener('click',e=>{
       const a=e.target.closest?.('a[href^="#"]'); if(!a)return;
@@ -836,7 +840,7 @@ body.is-loading{overflow:hidden!important}
       if(!document.body.classList.contains('is-loading')){
         current+=(target-current)*.105;
         if(Math.abs(target-current)<.08)current=target;
-        programmatic=true; scrollTo(0,current); programmatic=false;
+        internalScroll=true; scrollTo(0,current); requestAnimationFrame(()=>{internalScroll=false});
       }
       requestAnimationFrame(frame);
     }
