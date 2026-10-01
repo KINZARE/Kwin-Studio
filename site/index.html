@@ -531,6 +531,22 @@ body.is-loading{overflow:hidden!important}
 <div class="project-pass"><div class="pass-card"><div class="pass-card__top"><b>KWIN STUDIO</b><span>PROJECT PASS / 2026</span></div><div class="pass-card__main"><h3>FAST<br>TRACK</h3><div class="pass-hole"></div></div><div class="pass-card__bottom"><span>Strategy → Design → Build</span><b>ADMIT ONE IDEA</b></div></div></div>
 </div></section><section class="project-cta section-rule"><div class="site-shell"><div class="eyebrow">Have a project in mind?</div><h2 class="project-cta__title">Let’s build something people remember.</h2><a class="project-cta__link" href="/contact.html">Start<br>a project ↗</a></div></section>
 </main><footer class="site-footer"><div class="site-shell site-footer__inner"><span>© 2026 Kwin Studio</span><span>Websites built to stand out.</span></div></footer>
+<script id="kwin-motion-coordinator">
+(() => {
+  const callbacks=new Set();
+  let raf=0;
+  const flush=()=>{
+    raf=0;
+    if(document.hidden) return;
+    callbacks.forEach(fn=>fn());
+  };
+  const request=()=>{if(!raf&&!document.hidden)raf=requestAnimationFrame(flush)};
+  addEventListener('scroll',request,{passive:true});
+  addEventListener('resize',request,{passive:true});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)request()});
+  window.__kwinMotion={register(fn){callbacks.add(fn);request()},request};
+})();
+</script>
 <script>
 (() => {
   const b=document.getElementById('menu-trigger'),m=document.getElementById('mobile-menu');
@@ -585,14 +601,11 @@ body.is-loading{overflow:hidden!important}
   const transform=qs('.transform'),transformStage=qs('.transform__stage'),wireframe=qs('.wireframe'),stamp=qs('.transform__stamp'),steps=qsa('.transform__steps span');
   const services=qsa('.service-row'),processSteps=qsa('.process-step'),studioLines=qsa('.studio-lines>div'),caps=qsa('.capability-cloud span');
   const cta=qs('.project-cta'),ctaTitle=qs('.project-cta__title'),ctaLink=qs('.project-cta__link');
-  let ticking=false;
-
   function setActiveStep(index){
     steps.forEach((el,i)=>el.classList.toggle('active',i===index));
   }
 
   function updateMotion(){
-    ticking=false;
     const vh=innerHeight, mobile=innerWidth<821;
 
     if(hero){
@@ -657,8 +670,7 @@ body.is-loading{overflow:hidden!important}
   dynamic.textContent='.project-cta::before{transform:translate(-50%,-50%) scale(calc(.12 + var(--open,0) * 3.1));}';
   document.head.appendChild(dynamic);
 
-  function request(){ if(!ticking){ticking=true;requestAnimationFrame(updateMotion);} }
-  addEventListener('scroll',request,{passive:true}); addEventListener('resize',request); requestAnimationFrame(updateMotion);
+  window.__kwinMotion?.register(updateMotion);
 
 })();
 </script>
@@ -715,14 +727,13 @@ body.is-loading{overflow:hidden!important}
   }
   function request(){if(!raf)raf=requestAnimationFrame(frame)}
 
-  addEventListener('scroll',request,{passive:true});addEventListener('resize',request);
+  window.__kwinMotion?.register(request);
   addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;root.style.setProperty('--pointer-x',`${mx}px`);root.style.setProperty('--pointer-y',`${my}px`);request()},{passive:true});
   qa('a,button').forEach(el=>{el.addEventListener('pointerenter',()=>cursor?.classList.add('is-hot'));el.addEventListener('pointerleave',()=>cursor?.classList.remove('is-hot'))});
   qa('.project__visual').forEach(visual=>{
     visual.addEventListener('pointerenter',()=>cursor?.classList.add('is-project'));
     visual.addEventListener('pointerleave',()=>cursor?.classList.remove('is-project'));
   });
-  request();
 })();
 </script>
 
@@ -752,18 +763,15 @@ body.is-loading{overflow:hidden!important}
   pass.parentElement.addEventListener('pointerleave',()=>pass.style.transform='');
  }
  if(reduce) return;
- let ticking=false;
  const cards=[...document.querySelectorAll('.brief-card')],lines=[...document.querySelectorAll('.agent-line')],world=document.querySelector('.screen-world'),screens=[...document.querySelectorAll('.float-screen')];
  function progress(el,start=.9,end=.12){const r=el.getBoundingClientRect(),vh=innerHeight;return clamp((vh*start-r.top)/(vh*(start-end)+r.height));}
  function update(){
-  ticking=false;
   cards.forEach((card,i)=>{const p=progress(card,.98,.2),side=i%2?1:-1;card.style.transform=`translate3d(${side*(1-p)*4.5}vw,${(1-p)*70}px,0) rotate(${side*(1-p)*2.5}deg)`;card.style.opacity=String(.12+.88*p)});
   const adaptive=document.querySelector('.adaptive-demo');if(adaptive&&stage){const p=progress(adaptive,.9,.08);stage.style.transform=`perspective(1400px) rotateX(${(p-.5)*2.5}deg) rotateY(${(.5-p)*4}deg) scale(${.95+.05*p})`}
   const agent=document.querySelector('.agent-scene');if(agent){const p=progress(agent,.9,.18),done=Math.floor(p*(lines.length+1));lines.forEach((line,i)=>line.classList.toggle('is-done',i<done));const s=document.querySelector('.agent-status');if(s)s.textContent=done>=lines.length?'Verified':'Running'}
   if(world){const r=world.getBoundingClientRect(),travel=Math.max(1,world.offsetHeight-innerHeight),p=clamp(-r.top/travel);screens.forEach((s,i)=>{const x=+s.dataset.x,y=+s.dataset.y,z=+s.dataset.z;const orbit=(p-.5)*2;s.style.transform=`translate3d(calc(-50% + ${x*(.3+p*.62)}vw),calc(-50% + ${y*(.3+p*.62)}vh),0) scale(${z*(.72+p*.3)}) rotateX(${(y/12)*orbit}deg) rotateY(${(-x/12)*orbit}deg) rotateZ(${(i%2?1:-1)*orbit*2.2}deg)`;s.style.opacity=String(.18+.82*Math.sin(Math.PI*clamp(p*1.15)))})}
  }
- const request=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
- addEventListener('scroll',request,{passive:true});addEventListener('resize',request);requestAnimationFrame(update);
+ window.__kwinMotion?.register(update);
 })();
 </script>
 <script id="kwin-loader-and-smooth-scroll">
