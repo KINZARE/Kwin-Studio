@@ -319,8 +319,7 @@ button { color: inherit; }
   .project__visual{backface-visibility:hidden;transform-style:preserve-3d}
   .project__visual .mock-browser{transform-style:preserve-3d;backface-visibility:hidden}
   .transform__stage::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 90deg,transparent,rgba(215,255,56,.22),transparent 28%,rgba(0,0,0,.12),transparent 72%);opacity:calc(.06 + var(--velocity) * .012);pointer-events:none;mix-blend-mode:multiply;transform:rotate(0deg)}
-  @keyframes portal-spin{to{transform:rotate(360deg)}}
-  .project-cta::after{content:"";position:absolute;left:50%;top:50%;width:34vw;aspect-ratio:1;border:1px solid rgba(10,10,10,.18);border-radius:50%;transform:translate(-50%,-50%) scale(calc(.25 + var(--open,0) * 6.4)) rotate(calc(var(--open,0) * 35deg));opacity:calc(var(--open,0) * .8);pointer-events:none}
+    .project-cta::after{content:"";position:absolute;left:50%;top:50%;width:34vw;aspect-ratio:1;border:1px solid rgba(10,10,10,.18);border-radius:50%;transform:translate(-50%,-50%) scale(calc(.25 + var(--open,0) * 6.4)) rotate(calc(var(--open,0) * 35deg));opacity:calc(var(--open,0) * .8);pointer-events:none}
   @media(min-width:821px) and (prefers-reduced-motion:no-preference){
     #work{height:245svh;padding-block:0}
     #work>.site-shell{position:sticky;top:0;height:100svh;max-width:100vw;width:100%;min-width:0;overflow:clip;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;align-content:center;padding-top:9vh;padding-bottom:4vh}
@@ -466,7 +465,7 @@ body.is-loading{overflow:hidden!important}
 </style><style id="recovery-input-css">@media (hover:none),(pointer:coarse){.motion-cursor{display:none!important}.brief-card__reveal{transform:none!important}.brief-card__art{transform:scale(1.02)}}</style></head><body>
 <div id="kwin-loader" aria-hidden="true">
   <div class="loader-noise"></div><div class="loader-portal"></div>
-  <div class="loader-copy"><div class="loader-kicker">Kwin Studio / Entering the experience</div><div class="loader-title"><span>Tomorrow</span><span>Awaits</span></div></div>
+  <div class="loader-copy"><div class="loader-kicker">Kwin Studio / Entering the experience</div><div class="loader-title"><span>KWIN</span><span>STUDIO</span></div></div>
   <div class="loader-bottom"><span class="loader-progress">00</span><span class="loader-status">Loading motion<br>and interface</span></div><div class="loader-bar"></div>
 </div><div class="motion-cursor" aria-hidden="true"></div>
 <a class="skip-link" href="#main">Ga naar inhoud</a>
@@ -648,9 +647,6 @@ body.is-loading{overflow:hidden!important}
       set(ctaTitle,'transform',`scale(${.88+.12*p}) translate3d(0,${(1-p)*38}px,0)`); set(ctaTitle,'opacity',String(.2+.8*p));
       set(ctaLink,'transform',`scale(${.78+.22*p}) rotate(${(1-p)*-8}deg)`); set(ctaLink,'opacity',String(.2+.8*p));
       cta.classList.toggle('is-opening',p>.72);
-      cta.style.setProperty('--portal-scale',String(.12+p*2.7));
-      const pseudoScale=.12+p*3.1;
-      cta.style.setProperty('--cta-scale',pseudoScale);
       // drive pseudo through transform scale variable by replacing stylesheet-friendly custom prop
       cta.style.setProperty('--open',p.toFixed(3));
     }
@@ -693,7 +689,6 @@ body.is-loading{overflow:hidden!important}
 
   function frame(){
     raf=0;setVelocity();
-    const vh=innerHeight;
     if(hero){
       const r=hero.getBoundingClientRect(),p=clamp(-r.top/Math.max(1,hero.offsetHeight*.9));
       rings.forEach((ring,i)=>{
