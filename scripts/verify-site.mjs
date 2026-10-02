@@ -83,7 +83,7 @@ pass('screen world uses shared 60 percent trigger',index.includes('const entryLe
 const heroRingOwners=(index.match(/heroRings\.forEach/g)||[]).length;
 pass('hero spatial motion has one frame owner',heroRingOwners===1,'found '+heroRingOwners);
 pass('legacy delayed hero-ring owner removed',!index.includes("const rings=qa('.portal-stack .portal-ring')"));
-pass('shared motion exposes viewport gating',index.includes("isNear(el,margin=.35)"));
+pass('shared motion exposes viewport gating',index.includes("const isNear=(el,margin=.35)=>"));
 pass('general motion gates offscreen sections',index.includes("if(workSection&&isNear(workSection,.25))")&&index.includes("if(servicesList&&isNear(servicesList,.25))"));
 pass('portal scenes gate offscreen work',index.includes("if(briefWall&&isNear(briefWall,.25))")&&index.includes("if(world&&isNear(world,.25))"));
 pass('desktop hero avoids animated backdrop filter',!index.includes('backdrop-filter:blur(1px)'));
