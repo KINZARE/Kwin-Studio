@@ -80,6 +80,15 @@ pass('floating screens stay visible through late scroll',index.includes("const v
 pass('global scroll trigger is 60 percent',index.includes('window.__kwinMotion={trigger:.60,register(fn){callbacks.add(fn);request()},request}'));
 pass('general motion uses shared 60 percent trigger',index.includes('const viewportTrigger=window.__kwinMotion?.trigger??.60;'));
 pass('screen world uses shared 60 percent trigger',index.includes('const entryLead=innerHeight*viewportTrigger,p=clamp((entryLead-r.top)/(entryLead+travel));'));
+const heroRingOwners=(index.match(/heroRings\.forEach/g)||[]).length;
+pass('hero spatial motion has one frame owner',heroRingOwners===1,'found '+heroRingOwners);
+pass('legacy delayed hero-ring owner removed',!index.includes("const rings=qa('.portal-stack .portal-ring')"));
+pass('shared motion exposes viewport gating',index.includes("isNear(el,margin=.35)"));
+pass('general motion gates offscreen sections',index.includes("if(workSection&&isNear(workSection,.25))")&&index.includes("if(servicesList&&isNear(servicesList,.25))"));
+pass('portal scenes gate offscreen work',index.includes("if(briefWall&&isNear(briefWall,.25))")&&index.includes("if(world&&isNear(world,.25))"));
+pass('desktop hero avoids animated backdrop filter',!index.includes('backdrop-filter:blur(1px)'));
+pass('hero pointer glow is no longer mouse-position repainted',!index.includes('circle at var(--pointer-x) var(--pointer-y)'));
+pass('portal rings avoid animated blend mode',!index.includes('.portal-stack .portal-ring{top:42%;left:50%;width:min(30vw,440px);opacity:.54;transform-origin:center;mix-blend-mode:screen}'));
 
 if(failures.length){
   console.error('\n'+failures.length+' release gate(s) failed.');
