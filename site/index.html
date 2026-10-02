@@ -924,11 +924,11 @@ body{font-synthesis:none}
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Architecture</span><div class="brief-card__reveal"><b>Let structure become the story.</b><p>Projects, point of view and process share one spatial rhythm across every screen.</p></div></article>
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Creative brand</span><div class="brief-card__reveal"><b>Build identity into motion.</b><p>Campaign energy, type and interface behavior move together instead of living in separate layers.</p></div></article>
 </div></div></section><section class="section section-rule" id="services"><div class="site-shell"><div class="section-heading"><div><div class="eyebrow">Services</div><h2>Everything a strong website needs.</h2></div><p>One studio from positioning and UX to development and launch. We keep the process compact and the output considered.</p></div><div class="services-list">
-<div class="service-row"><span class="service-row__index">01</span><h3>Strategy</h3><p>Positioning, structure and digital direction before the interface starts moving.</p></div><div class="service-row"><span class="service-row__index">02</span><h3>UX/UI Design</h3><p>Clear user journeys, responsive interfaces and art direction shaped into one distinct visual language.</p></div><div class="service-row"><span class="service-row__index">03</span><h3>Development</h3><p>Production code, CMS foundations and performance without flattening the design.</p></div><div class="service-row"><span class="service-row__index">04</span><h3>Interactive Development</h3><p>Motion, spatial interaction and scroll storytelling built to support clarity, proof and conversion.</p></div></div></div></section>
+<div class="service-row"><span class="service-row__index">01</span><h3>Website Strategy</h3><p>Positioning, structure and digital direction before the interface starts moving.</p></div><div class="service-row"><span class="service-row__index">02</span><h3>UX/UI Design</h3><p>Clear user journeys, responsive interfaces and art direction shaped into one distinct visual language.</p></div><div class="service-row"><span class="service-row__index">03</span><h3>Website Development</h3><p>Production code, CMS foundations and performance without flattening the design.</p></div><div class="service-row"><span class="service-row__index">04</span><h3>Interactive Development</h3><p>Motion, spatial interaction and scroll storytelling built to support clarity, proof and conversion.</p></div></div></div></section>
 
 
 <section class="generative-scene" id="generative-directions"><div class="site-shell">
-  <div class="generative-head"><div><div class="scene-kicker">One brief, many directions</div><h2>Explore the strongest direction.</h2></div><p>Compare distinct visual systems, shift the composition and keep the direction that best supports the message. The interaction demonstrates design decisions instead of pretending to be a generator.</p></div>
+  <div class="generative-head"><div><div class="scene-kicker">One brief, many directions</div><h2>Explore the strongest direction.</h2></div><p>Compare distinct visual systems, shift the composition and keep the direction that best supports the message. The interaction makes creative tradeoffs visible before the final direction is built.</p></div>
   <div class="generative-grid">
     <article class="gen-card" data-gen="0" data-variant-index="0"><div class="gen-art"></div><div class="gen-meta"><div><b>Direction 01</b><span>Editorial / Premium / Direct</span></div><button class="regen-btn">Explore variation</button></div></article>
     <article class="gen-card" data-gen="1" data-variant-index="1"><div class="gen-art"></div><div class="gen-meta"><div><b>Direction 02</b><span>Playful / Spatial / Interactive</span></div><button class="regen-btn">Explore variation</button></div></article>
@@ -1307,7 +1307,7 @@ body{font-synthesis:none}
   ];
   document.querySelectorAll('.regen-btn:not(:disabled)').forEach(btn=>btn.addEventListener('click',()=>{
     const card=btn.closest('.gen-card'),art=card.querySelector('.gen-art'),label=card.querySelector('.gen-meta span');
-    card.classList.add('is-regenerating'); btn.disabled=true; btn.textContent='Generating…';
+    card.classList.add('is-regenerating'); btn.disabled=true; btn.textContent='Switching…';
     setTimeout(()=>{
       const current=Number(card.dataset.variantIndex||0),next=(current+1)%palettes.length;
       card.dataset.variantIndex=String(next);
