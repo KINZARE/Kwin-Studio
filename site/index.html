@@ -100,6 +100,14 @@ button { color: inherit; }
 .project__visual::after { content:''; position:absolute; inset:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); pointer-events:none; }
 .project__visual--warm { background: #b9a38b; color: #16120e; }
 .project__visual--cool { background: #c8e8f5; color: #0b1a21; }
+.project__visual--mono { background: #ece9e2; color: #111; }
+.project__visual--mono .mock-browser { background:#111;color:#f4f2ed; }
+.project__visual--mono .mock-browser__bar { border-color:rgba(255,255,255,.14); }
+.project__visual--mono .mock-site__card { background:#ece9e2; }
+.project__visual--acid { background: #d7ff38; color: #0b0b0b; }
+.project__visual--acid .mock-browser { background:#0b0b0b;color:#f4f2ed; }
+.project__visual--acid .mock-browser__bar { border-color:rgba(255,255,255,.16); }
+.project__visual--acid .mock-site__card { background:#d7ff38; }
 .mock-browser { position: absolute; inset: 9% 7% 6%; border-radius: 2px; background: #f6f4ee; box-shadow: 0 28px 70px rgba(0,0,0,.22); overflow: hidden; }
 .mock-browser__bar { height: 34px; border-bottom: 1px solid rgba(0,0,0,.12); display: flex; align-items:center; gap:6px; padding:0 12px; }
 .mock-dot { width: 5px; height:5px; border-radius:50%; background: currentColor; opacity:.35; }
@@ -351,6 +359,7 @@ button { color: inherit; }
 .brief-card:nth-child(5){grid-column:1/span 4;margin-top:40px;min-height:310px}
 .brief-card:nth-child(6){grid-column:6/span 4;margin-top:100px;min-height:350px}
 .brief-card__art{position:absolute;inset:0;transition:transform .7s var(--ease),filter .5s ease}
+.brief-card__art .study-art{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
 .brief-card:nth-child(1) .brief-card__art{background:radial-gradient(circle at 70% 25%,#d7ff38 0 9%,transparent 10%),linear-gradient(135deg,#181818 20%,#565656 20% 23%,#b4b4b4 23% 42%,#202020 42% 70%,#d7ff38 70%)}
 .brief-card:nth-child(2) .brief-card__art{background:repeating-linear-gradient(90deg,#f0ede5 0 12px,#161616 12px 24px)}
 .brief-card:nth-child(3) .brief-card__art{background:radial-gradient(circle at 50% 50%,transparent 0 22%,#c7e9f7 23% 35%,transparent 36%),radial-gradient(circle at 50% 50%,#111 0 18%,transparent 19%),#bd9c7c}
@@ -381,10 +390,6 @@ button { color: inherit; }
 .intent-visual::before,.intent-visual::after{content:"";position:absolute;border-radius:50%;border:1px solid #d7ff38}
 .intent-visual::before{width:58%;aspect-ratio:1;left:12%;top:10%}
 .intent-visual::after{width:38%;aspect-ratio:1;right:7%;bottom:8%}
-.intent-stage[data-mode="story"] .intent-screen{transform:rotateY(-8deg) translateX(-3%) scale(.92)}
-.intent-stage[data-mode="story"] .intent-screen__body{grid-template-columns:1.25fr .75fr}
-.intent-stage[data-mode="convert"] .intent-screen{transform:rotateY(7deg) translateX(4%) scale(.96)}
-.intent-stage[data-mode="convert"] .intent-visual{background:#d7ff38}
 .agent-scene{padding:clamp(120px,16vw,240px) 0}
 .agent-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:start}
 .agent-panel{border:1px solid var(--line);background:#0d0d0d;min-height:620px;display:grid;grid-template-rows:auto 1fr auto}
@@ -505,14 +510,6 @@ body.is-loading{overflow:hidden!important}
 .intent-detail{position:absolute;z-index:4;border:1px solid rgba(17,17,17,.18);background:rgba(255,255,255,.92);box-shadow:0 18px 54px rgba(0,0,0,.14);padding:13px;color:#111;transition:transform .7s var(--ease),opacity .45s ease}
 .intent-detail small{display:block;font-size:8px;text-transform:uppercase;letter-spacing:.14em;color:#666}.intent-detail b{display:block;margin-top:16px;font-size:18px;letter-spacing:-.04em}
 .intent-detail--signal{left:2%;bottom:4%;width:150px}.intent-detail--proof{right:1%;top:8%;width:170px}.intent-detail--route{right:4%;bottom:3%;width:190px}
-.intent-stage[data-mode="scan"] .intent-detail--signal{transform:translate(3px,-8px) rotate(-3deg)}
-.intent-stage[data-mode="scan"] .intent-detail--proof{transform:translate(-3px,8px) rotate(3deg)}
-.intent-stage[data-mode="story"] .intent-detail--signal{transform:translate(24px,-32px) rotate(5deg)}
-.intent-stage[data-mode="story"] .intent-detail--proof{transform:translate(-34px,28px) rotate(-6deg)}
-.intent-stage[data-mode="story"] .intent-detail--route{transform:translate(-22px,-20px) rotate(3deg)}
-.intent-stage[data-mode="convert"] .intent-detail--signal{transform:translate(18px,28px) rotate(-5deg)}
-.intent-stage[data-mode="convert"] .intent-detail--proof{transform:translate(-22px,-18px) rotate(5deg)}
-.intent-stage[data-mode="convert"] .intent-detail--route{transform:translate(-44px,-36px) scale(1.06)}
 
 .agent-results{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
 .agent-result{border:1px solid #2b2b2b;min-height:118px;padding:12px;display:flex;flex-direction:column;justify-content:space-between;background:#111}
@@ -540,6 +537,128 @@ body.is-loading{overflow:hidden!important}
 }
 @media(prefers-reduced-motion:reduce){#kwin-loader{transition:none}.design-stack__panel,.intent-detail{transform:none!important}}
 </style>
+<style id="portal-v2-spatial-css">
+.portal-stack{z-index:0!important}
+.hero>.site-shell{position:relative;z-index:3}
+.gateway-plane{position:absolute;left:50%;top:42%;width:min(46vw,690px);aspect-ratio:1.45;border:1px solid rgba(244,242,237,.10);transform:translate(-50%,-50%);clip-path:polygon(8% 0,92% 0,100% 18%,100% 82%,92% 100%,8% 100%,0 82%,0 18%);background:linear-gradient(135deg,rgba(255,255,255,.025),transparent 35%,rgba(215,255,56,.035));backdrop-filter:blur(1px);will-change:transform,opacity}
+.gateway-plane--back{width:min(62vw,900px);opacity:.32}
+.gateway-plane--front{width:min(35vw,510px);opacity:.5}
+.gateway-aperture{position:absolute;left:50%;top:42%;width:min(18vw,270px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle at 50% 50%,rgba(215,255,56,.18),rgba(215,255,56,.035) 35%,transparent 70%);box-shadow:0 0 120px rgba(215,255,56,.18),inset 0 0 0 1px rgba(215,255,56,.35);will-change:transform,opacity}
+.gateway-axis{position:absolute;left:50%;top:42%;background:linear-gradient(90deg,transparent,rgba(244,242,237,.16),transparent);opacity:.5}
+.gateway-axis--x{width:min(72vw,1080px);height:1px;transform:translate(-50%,-50%)}
+.gateway-axis--y{height:min(74vh,760px);width:1px;transform:translate(-50%,-50%);background:linear-gradient(0deg,transparent,rgba(244,242,237,.13),transparent)}
+.hero-depth-chip{z-index:4}
+@media(max-width:820px){.gateway-plane{width:76vw}.gateway-plane--back{width:94vw}.gateway-plane--front{width:58vw}.gateway-aperture{width:34vw}.gateway-axis--y{height:56vh}}
+@media(prefers-reduced-motion:reduce){.gateway-plane,.gateway-aperture,.gateway-axis{display:none!important}}
+</style>
+<style id="portal-v2-density-css">
+.brief-wall__grid{min-height:226vh}
+.brief-card:nth-child(11){grid-column:2/span 4;margin-top:40px;min-height:360px}
+.brief-card:nth-child(12){grid-column:7/span 5;margin-top:-40px;min-height:470px}
+.brief-card:nth-child(13){grid-column:1/span 5;margin-top:95px;min-height:430px}
+.brief-card:nth-child(14){grid-column:8/span 4;margin-top:22px;min-height:390px}
+.brief-card:nth-child(11) .brief-card__art{background:linear-gradient(135deg,#111 0 36%,#d29b80 36% 62%,#eee8dc 62%)}
+.brief-card:nth-child(12) .brief-card__art{background:radial-gradient(circle at 54% 44%,#d7ff38 0 9%,transparent 10%),linear-gradient(110deg,#0d0d0d 0 52%,#c7e9f7 52%)}
+.brief-card:nth-child(13) .brief-card__art{background:linear-gradient(155deg,#ece8df 0 40%,#111 40% 72%,#d7ff38 72%)}
+.brief-card:nth-child(14) .brief-card__art{background:repeating-linear-gradient(90deg,#111 0 32px,#d7ff38 32px 34px,#111 34px 68px)}
+.design-stack{min-height:920px}
+.design-stack__panel--e{left:23%;top:7%;width:176px;transform:rotate(3deg)}
+.design-stack__panel--f{right:20%;bottom:5%;width:206px;transform:rotate(4deg)}
+.design-stack__panel--g{left:38%;bottom:2%;width:236px;transform:rotate(-2deg)}
+@media(max-width:820px){
+ .brief-wall__grid{min-height:auto}
+ .brief-card,.brief-card:nth-child(n){grid-column:auto;margin-top:0;min-height:54vw}
+ .design-stack{min-height:720px}
+ .design-stack__panel--e{left:22%;top:4%;width:140px}
+ .design-stack__panel--f{right:18%;bottom:4%;width:150px}
+ .design-stack__panel--g{left:34%;bottom:1%;width:160px}
+}
+@media(max-width:520px){
+ .brief-card,.brief-card:nth-child(n){min-height:85vw}
+ .design-stack__panel--e,.design-stack__panel--f,.design-stack__panel--g{display:none}
+}
+</style>
+<style id="portal-v2-stateful-css">
+.intent-screen__body{grid-template-columns:.86fr 1.14fr;grid-template-rows:1fr auto;transition:grid-template-columns .7s var(--ease)}
+.intent-copy{position:relative;z-index:2}.intent-cta{display:inline-flex;align-self:flex-start;border-bottom:1px solid #111;padding-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.intent-visual__grid{position:absolute;inset:9%;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.intent-visual__grid span{border:1px solid rgba(215,255,56,.55);background:linear-gradient(145deg,rgba(215,255,56,.12),transparent)}
+.intent-modules{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.intent-module{border:1px solid #d4d0c8;padding:10px 12px;min-height:72px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .7s var(--ease),opacity .45s ease,background .45s ease}
+.intent-module small{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:#777}.intent-module b{font-size:14px;letter-spacing:-.03em}
+.intent-stage[data-mode="overview"] .intent-screen{transform:rotateY(-2deg) translateX(0) scale(.96)}
+.intent-stage[data-mode="overview"] .intent-module--proof{background:#111;color:#fff;transform:translateY(-6px)}
+.intent-stage[data-mode="overview"] .intent-detail--signal{transform:translate(3px,-8px) rotate(-3deg)}
+.intent-stage[data-mode="overview"] .intent-detail--proof{transform:translate(-3px,8px) rotate(3deg)}
+.intent-stage[data-mode="story"] .intent-screen{transform:rotateY(-7deg) translateX(-3%) scale(.93)}
+.intent-stage[data-mode="story"] .intent-screen__body{grid-template-columns:1.18fr .82fr}
+.intent-stage[data-mode="story"] .intent-copy h3{font-size:clamp(50px,6.8vw,98px)}
+.intent-stage[data-mode="story"] .intent-module--story{background:#111;color:#fff;transform:translateY(-8px)}
+.intent-stage[data-mode="story"] .intent-visual{background:#c7e9f7}
+.intent-stage[data-mode="decision"] .intent-screen{transform:rotateY(7deg) translateX(4%) scale(.965)}
+.intent-stage[data-mode="decision"] .intent-screen__body{grid-template-columns:.68fr 1.32fr}
+.intent-stage[data-mode="decision"] .intent-module--action{background:#d7ff38;transform:translateY(-10px) scale(1.03)}
+.intent-stage[data-mode="decision"] .intent-cta{background:#111;color:#fff;padding:10px 12px;border:0}
+.intent-stage[data-mode="decision"] .intent-visual{background:#d7ff38}
+.intent-stage[data-mode="story"] .intent-detail--signal{transform:translate(24px,-32px) rotate(5deg)}
+.intent-stage[data-mode="story"] .intent-detail--proof{transform:translate(-34px,28px) rotate(-6deg)}
+.intent-stage[data-mode="story"] .intent-detail--route{transform:translate(-22px,-20px) rotate(3deg)}
+.intent-stage[data-mode="decision"] .intent-detail--signal{transform:translate(18px,28px) rotate(-5deg)}
+.intent-stage[data-mode="decision"] .intent-detail--proof{transform:translate(-22px,-18px) rotate(5deg)}
+.intent-stage[data-mode="decision"] .intent-detail--route{transform:translate(-44px,-36px) scale(1.06)}
+.agent-request{margin-top:38px;border-left:1px solid var(--accent);padding:13px 0 13px 16px;max-width:390px}.agent-request small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px}.agent-request strong{font-size:16px;line-height:1.4;font-weight:500}
+.agent-panel{min-height:780px}
+.agent-artifacts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.agent-artifact{border:1px solid #292929;background:#111;min-height:98px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;opacity:.42;transform:translateY(14px);transition:opacity .45s ease,transform .45s var(--ease)}
+.agent-artifact.is-done{opacity:1;transform:none}.agent-artifact small{font-size:8px;color:#777;text-transform:uppercase;letter-spacing:.13em}.agent-artifact b{font-size:13px}.agent-artifact span{font-size:8px;color:var(--accent);text-transform:uppercase;letter-spacing:.11em}
+@media(max-width:820px){.intent-screen__body{grid-template-columns:1fr!important}.intent-modules{grid-template-columns:1fr 1fr}.agent-panel{min-height:690px}.agent-artifacts{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.intent-modules{grid-template-columns:1fr}.agent-artifacts{grid-template-columns:1fr}.agent-panel{min-height:auto}.agent-feed{overflow:visible}}
+</style>
+<style id="portal-v2-screen-pass-css">
+.screen-world{min-height:250vh}
+.float-screen--secondary{width:clamp(120px,14vw,235px)}
+.project-pass{min-height:610px}
+.pass-card{position:relative;aspect-ratio:1.62;grid-template-rows:auto auto 1fr auto auto;overflow:hidden;background:linear-gradient(145deg,#eee9dd,#d7d2c7 68%,#c8c2b5)}
+.pass-card::before{content:"";position:absolute;right:-22%;top:-42%;width:62%;aspect-ratio:1;border:1px solid rgba(17,17,17,.18);border-radius:50%;box-shadow:0 0 0 28px rgba(215,255,56,.22),0 0 0 56px rgba(17,17,17,.08)}
+.pass-card::after{content:"";position:absolute;left:45%;top:0;bottom:0;border-left:1px dashed rgba(17,17,17,.18);pointer-events:none}
+.pass-card__rail{margin:-24px -24px 14px;padding:9px 14px;background:#111;color:#d7ff38;font-size:8px;letter-spacing:.16em;text-transform:uppercase}
+.pass-card__stages{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid rgba(17,17,17,.18);border-bottom:1px solid rgba(17,17,17,.18);margin:14px 0;padding:10px 0;font-size:8px;letter-spacing:.12em;text-transform:uppercase}
+.pass-card__stages span+span{border-left:1px solid rgba(17,17,17,.18);padding-left:10px}
+.pass-hole{position:relative;z-index:2}
+@media(max-width:820px){.screen-world{min-height:150vh}.float-screen--secondary{width:26vw}.project-pass{min-height:500px}}
+@media(max-width:520px){.screen-world{min-height:118vh}.float-screen--secondary{display:none}.project-pass{min-height:430px}.pass-card__stages{grid-template-columns:1fr 1fr;gap:8px}.pass-card{aspect-ratio:1.15}}
+</style>
+<style id="portal-v2-responsive-hardening">
+@media(min-width:821px) and (prefers-reduced-motion:no-preference){
+  #work{height:360svh}
+}
+@media(min-width:821px) and (max-width:1100px){
+  #work .project{flex-basis:84vw;width:84vw}
+  #work .projects{gap:6vw}
+  .design-stack__browser{width:82vw}
+  .hero-depth-chip:nth-child(3){right:12%}
+}
+@media(max-width:820px){
+  .float-screen--secondary{display:none}
+  .screen-world__title{width:min(82vw,660px)}
+  .intent-stage{overflow:hidden}
+  .agent-request{margin-top:24px}
+}
+@media(max-width:430px){
+  .hero{padding-top:104px}
+  .hero__top{gap:16px}
+  .hero__actions{gap:10px}
+  .hero__title{font-size:clamp(70px,21vw,104px)}
+  .screen-world__title h2{font-size:17vw}
+  .project-pass-copy .scene-title{font-size:16vw}
+}
+@media(max-width:360px){
+  .hero__intro{font-size:15px}
+  .intent-tab{padding:9px 10px;font-size:12px}
+  .pass-card{padding:18px}
+  .pass-card__rail{margin:-18px -18px 10px}
+}
+</style>
 <style id="recovery-input-css">@media (hover:none),(pointer:coarse){.motion-cursor{display:none!important}.brief-card__reveal{transform:none!important}.brief-card__art{transform:scale(1.02)}}</style></head><body>
 <div id="kwin-loader" aria-hidden="true">
   <div class="loader-noise"></div><div class="loader-portal"></div>
@@ -550,29 +669,35 @@ body.is-loading{overflow:hidden!important}
 <header class="site-header"><div class="site-shell site-header__inner"><a class="brand" href="#">KWIN STUDIO</a><nav class="desktop-nav"><a href="#work">Work</a><a href="#services">Services</a><a href="#studio">Studio</a><a href="/contact.html">Contact</a><a class="nav-cta" href="/contact.html">Start a project</a></nav><button id="menu-trigger" class="menu-trigger" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">Menu</button></div></header>
 <div class="mobile-menu" id="mobile-menu" hidden><nav><a href="#work">Work</a><a href="#services">Services</a><a href="#studio">Studio</a><a href="/contact.html">Contact</a><a href="/contact.html">Start a project ↗</a></nav><div class="mobile-menu__meta">Premium websites · Strategy · Design · Development</div></div>
 <main id="main">
-<section class="hero"><div class="hero__orb"></div><div class="portal-stack" aria-hidden="true"><div class="portal-ring portal-ring--1"></div><div class="portal-ring portal-ring--2"></div><div class="portal-ring portal-ring--3"></div><div class="portal-ring portal-ring--4"></div><div class="portal-ring portal-ring--5"></div></div><div class="hero-depth-field" aria-hidden="true"><span class="hero-depth-chip">Strategy</span><span class="hero-depth-chip">Interface</span><span class="hero-depth-chip">Motion</span><div class="hero-crosshair"></div></div><div class="site-shell"><div class="hero__top"><p class="hero__intro">We design and build premium websites for ambitious businesses — from the first idea to a fast, polished launch.</p><div class="hero__actions"><a class="text-link" href="/contact.html">Start a project <span>↗</span></a><a class="text-link" href="#work">View work <span>↓</span></a></div></div><h1 class="hero__title"><span>KWIN</span><span>STUDIO</span></h1><div class="hero__footer"><p class="hero__headline">Websites built<br>to stand out.</p><span class="hero__scroll">Scroll to explore</span></div></div></section>
+<section class="hero"><div class="hero__orb"></div><div class="portal-stack" aria-hidden="true"><div class="gateway-plane gateway-plane--back"></div><div class="portal-ring portal-ring--1"></div><div class="portal-ring portal-ring--2"></div><div class="portal-ring portal-ring--3"></div><div class="portal-ring portal-ring--4"></div><div class="portal-ring portal-ring--5"></div><div class="gateway-aperture"></div><div class="gateway-plane gateway-plane--front"></div><div class="gateway-axis gateway-axis--x"></div><div class="gateway-axis gateway-axis--y"></div></div><div class="hero-depth-field" aria-hidden="true"><span class="hero-depth-chip">Strategy</span><span class="hero-depth-chip">Interface</span><span class="hero-depth-chip">Motion</span><div class="hero-crosshair"></div></div><div class="site-shell"><div class="hero__top"><p class="hero__intro">KWIN Studio creates premium digital experiences for ambitious modern brands — from strategy and art direction to development and launch.</p><div class="hero__actions"><a class="text-link" href="/contact.html">Start a project <span>↗</span></a><a class="text-link" href="#work">View work <span>↓</span></a></div></div><h1 class="hero__title"><span>KWIN</span><span>STUDIO</span></h1><div class="hero__footer"><p class="hero__headline">Websites built<br>to stand out.</p><span class="hero__scroll">Scroll to explore</span></div></div></section>
 <section class="statement section-rule"><div class="site-shell"><div class="eyebrow">A website should work harder</div><p class="statement__copy">Your website should do more than exist. <span class="muted">It should convince. Feel premium. Make people act.</span></p><div class="statement__aside"><span>01 / Perspective</span><p>We strip away noise, make the message obvious and use design, code and interaction to move people forward.</p></div></div></section>
-<section class="section section-rule" id="work"><div class="site-shell"><div class="section-heading"><div><div class="eyebrow">Selected work</div><h2>Proof over promises.</h2></div><p>We show the work large, because the work is the pitch. Each project is built around clarity, feeling and the action the business needs next.</p></div><div class="projects">
-<article class="project"><div class="project__visual project__visual--warm"><div class="mock-browser"><div class="mock-browser__bar"><i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i></div><div class="mock-site"><div class="mock-site__nav"><b>SALON</b><span>Menu · Contact</span></div><div class="mock-site__hero">Built for attention.</div><div class="mock-site__row"><i class="mock-site__card"></i><i class="mock-site__card"></i><i class="mock-site__card"></i></div></div></div></div><div class="project__copy"><div class="project__index">01 — Beauty & appointments</div><h3 class="project__title">SALON</h3><p class="project__summary">Een premium website-ervaring voor salons: helder, snel en ontworpen om bezoekers naar boeken te bewegen.</p><div class="project__meta"><span>Strategy</span><span>UX/UI</span><span>Web development</span><span>2026</span></div></div></article>
-<article class="project"><div class="project__visual project__visual--cool"><div class="mock-browser"><div class="mock-browser__bar"><i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i></div><div class="mock-site"><div class="mock-site__nav"><b>Boekuna</b><span>Menu · Contact</span></div><div class="mock-site__hero">Clear. Fast. Built to convert.</div><div class="mock-site__row"><i class="mock-site__card"></i><i class="mock-site__card"></i><i class="mock-site__card"></i></div></div></div></div><div class="project__copy"><div class="project__index">02 — Booking & services</div><h3 class="project__title">Boekuna</h3><p class="project__summary">Een frisse commerciële website met sterke hiërarchie, mobiele focus en een duidelijke route naar conversie.</p><div class="project__meta"><span>UX/UI</span><span>Interaction</span><span>Development</span><span>2026</span></div></div></article>
+<section class="section section-rule" id="work"><div class="site-shell"><div class="section-heading"><div><div class="eyebrow">Selected directions</div><h2>Proof through perspective.</h2></div><p>Four digital studies for modern premium brands — each built around a different audience, rhythm and commercial objective.</p></div><div class="projects">
+<article class="project"><div class="project__visual project__visual--warm"><div class="mock-browser"><div class="mock-browser__bar"><i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i></div><div class="mock-site"><div class="mock-site__nav"><b>ATELIER / 01</b><span>Stay · Dine · Discover</span></div><div class="mock-site__hero">A slower kind of luxury.</div><div class="mock-site__row"><i class="mock-site__card"></i><i class="mock-site__card"></i><i class="mock-site__card"></i></div></div></div></div><div class="project__copy"><div class="project__index">01 — Luxury hospitality / Digital direction</div><h3 class="project__title">Quiet luxury.</h3><p class="project__summary">An editorial hospitality concept built around atmosphere, restraint and a clear path from desire to reservation.</p><div class="project__meta"><span>Concept</span><span>Strategy</span><span>Experience design</span><span>2026</span></div></div></article>
+<article class="project"><div class="project__visual project__visual--cool"><div class="mock-browser"><div class="mock-browser__bar"><i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i></div><div class="mock-site"><div class="mock-site__nav"><b>SIGNAL / AI</b><span>Platform · Models · Contact</span></div><div class="mock-site__hero">Intelligence, made tangible.</div><div class="mock-site__row"><i class="mock-site__card"></i><i class="mock-site__card"></i><i class="mock-site__card"></i></div></div></div></div><div class="project__copy"><div class="project__index">02 — AI & technology / Interface study</div><h3 class="project__title">Signal over noise.</h3><p class="project__summary">A technical interface study that turns complex capability into a confident product story with fast comprehension.</p><div class="project__meta"><span>Interface study</span><span>UX/UI</span><span>Interactive</span><span>2026</span></div></div></article>
+<article class="project"><div class="project__visual project__visual--mono"><div class="mock-browser"><div class="mock-browser__bar"><i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i></div><div class="mock-site"><div class="mock-site__nav"><b>FORM / SPACE</b><span>Practice · Work · Journal</span></div><div class="mock-site__hero">Space deserves space.</div><div class="mock-site__row"><i class="mock-site__card"></i><i class="mock-site__card"></i><i class="mock-site__card"></i></div></div></div></div><div class="project__copy"><div class="project__index">03 — Architecture & premium service / Digital direction</div><h3 class="project__title">Structure with presence.</h3><p class="project__summary">A spatial brand direction where work, process and point of view feel considered before a visitor reads a paragraph.</p><div class="project__meta"><span>Digital direction</span><span>Editorial UX</span><span>Development</span><span>2026</span></div></div></article>
+<article class="project"><div class="project__visual project__visual--acid"><div class="mock-browser"><div class="mock-browser__bar"><i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i></div><div class="mock-site"><div class="mock-site__nav"><b>OBJECT / BRAND</b><span>Identity · Campaign · Digital</span></div><div class="mock-site__hero">Make the idea impossible to miss.</div><div class="mock-site__row"><i class="mock-site__card"></i><i class="mock-site__card"></i><i class="mock-site__card"></i></div></div></div></div><div class="project__copy"><div class="project__index">04 — Creative brand / Experience study</div><h3 class="project__title">A brand in motion.</h3><p class="project__summary">A bold experience study for design-led brands that need identity, interaction and conversion to feel like one system.</p><div class="project__meta"><span>Experience study</span><span>Art direction</span><span>Motion</span><span>2026</span></div></div></article>
 </div></div></section>
 <section class="transform section-rule"><div class="transform__sticky"><div class="site-shell transform__grid"><div class="transform__copy"><div class="eyebrow">From rough to remarkable</div><h2>Built in layers.</h2><p>Good websites are not decoration. We first make the structure work, then add the visual system, interaction and responsive detail that make it memorable.</p><div class="transform__steps"><span class="active">01 Structure</span><span>02 UX</span><span>03 Visual design</span><span>04 Interaction</span><span>05 Responsive</span><span>06 Launch</span></div></div><div class="transform__stage"><div class="wireframe"><div class="wireframe__nav"><i class="wireframe__logo"></i><span class="wireframe__links"><i></i><i></i><i></i></span></div><div class="wireframe__hero">YOUR NEXT WEBSITE</div><div class="wireframe__footer"><i></i><i></i><i></i></div></div><span class="transform__stamp">Visual design</span></div></div></div></section>
 
 <section class="story-scene brief-wall" id="brief-wall"><div class="site-shell">
 <div class="brief-wall__intro"><div><div class="scene-kicker">Ideas become interfaces</div><h2 class="scene-title">A brief should spark a world.</h2></div><p>Hover the surfaces. Every strong website starts with a different tension: trust, speed, desire, clarity, status or conversion. We turn that tension into a visual system.</p></div>
 <div class="brief-wall__grid">
-<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Premium local brand</span><div class="brief-card__reveal"><b>Make ordinary feel expensive.</b><p>High contrast, confident type, fewer choices and a booking path that never disappears.</p></div></article>
-<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Service business</span><div class="brief-card__reveal"><b>Trust in five seconds.</b><p>Proof, process and a page rhythm that makes the next action obvious.</p></div></article>
-<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Creative launch</span><div class="brief-card__reveal"><b>Turn scroll into a reveal.</b><p>Motion and depth that build curiosity instead of decorating the page.</p></div></article>
-<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">High-conversion redesign</span><div class="brief-card__reveal"><b>Remove the maze.</b><p>Sharper hierarchy, stronger messaging and fewer dead ends between interest and inquiry.</p></div></article>
-<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Ecommerce</span><div class="brief-card__reveal"><b>Make the product the interface.</b><p>Editorial presentation with the speed and clarity required to buy.</p></div></article>
-<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Interactive web</span><div class="brief-card__reveal"><b>Build a site worth exploring.</b><p>Controlled surprise, responsive motion and tactile feedback without sacrificing usability.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"><img class="study-art" src="/assets/studies/hospitality-editorial.svg" alt="" loading="lazy" decoding="async"></div><span class="brief-card__label">Premium local brand</span><div class="brief-card__reveal"><b>Make ordinary feel expensive.</b><p>High contrast, confident type, fewer choices and a booking path that never disappears.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"><img class="study-art" src="/assets/studies/ai-interface-grid.svg" alt="" loading="lazy" decoding="async"></div><span class="brief-card__label">Service business</span><div class="brief-card__reveal"><b>Trust in five seconds.</b><p>Proof, process and a page rhythm that makes the next action obvious.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"><img class="study-art" src="/assets/studies/architecture-study.svg" alt="" loading="lazy" decoding="async"></div><span class="brief-card__label">Creative launch</span><div class="brief-card__reveal"><b>Turn scroll into a reveal.</b><p>Motion and depth that build curiosity instead of decorating the page.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"><img class="study-art" src="/assets/studies/creative-brand-poster.svg" alt="" loading="lazy" decoding="async"></div><span class="brief-card__label">High-conversion redesign</span><div class="brief-card__reveal"><b>Remove the maze.</b><p>Sharper hierarchy, stronger messaging and fewer dead ends between interest and inquiry.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"><img class="study-art" src="/assets/studies/luxury-material-study.svg" alt="" loading="lazy" decoding="async"></div><span class="brief-card__label">Ecommerce</span><div class="brief-card__reveal"><b>Make the product the interface.</b><p>Editorial presentation with the speed and clarity required to buy.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"><img class="study-art" src="/assets/studies/spatial-interface-map.svg" alt="" loading="lazy" decoding="async"></div><span class="brief-card__label">Interactive web</span><div class="brief-card__reveal"><b>Build a site worth exploring.</b><p>Controlled surprise, responsive motion and tactile feedback without sacrificing usability.</p></div></article>
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Brand system</span><div class="brief-card__reveal"><b>Make every screen feel related.</b><p>Type, spacing, color and interface rules turn separate pages into one recognizable world.</p></div></article>
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Product story</span><div class="brief-card__reveal"><b>Show before you explain.</b><p>Layered product moments reveal value progressively instead of forcing visitors through walls of copy.</p></div></article>
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Responsive detail</span><div class="brief-card__reveal"><b>Design the small screen on purpose.</b><p>Mobile gets its own rhythm, hierarchy and interaction logic rather than a compressed desktop.</p></div></article>
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Launch system</span><div class="brief-card__reveal"><b>Turn the concept into a complete release.</b><p>Design, motion, performance and QA stay connected all the way to the live website.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Luxury hospitality</span><div class="brief-card__reveal"><b>Make atmosphere part of the interface.</b><p>Editorial pacing, material detail and a direct reservation path without losing the mood.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">AI product</span><div class="brief-card__reveal"><b>Turn complexity into confidence.</b><p>Technical products become legible through hierarchy, interaction and carefully staged proof.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Architecture</span><div class="brief-card__reveal"><b>Let structure become the story.</b><p>Projects, point of view and process share one spatial rhythm across every screen.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Creative brand</span><div class="brief-card__reveal"><b>Build identity into motion.</b><p>Campaign energy, type and interface behavior move together instead of living in separate layers.</p></div></article>
 </div></div></section><section class="section section-rule" id="services"><div class="site-shell"><div class="section-heading"><div><div class="eyebrow">Services</div><h2>Everything a strong website needs.</h2></div><p>One studio from positioning and UX to development and launch. We keep the process compact and the output considered.</p></div><div class="services-list">
-<div class="service-row"><span class="service-row__index">01</span><h3>Website strategy</h3><p>Structuur, boodschap en conversieflow voordat we pixels perfectioneren.</p></div><div class="service-row"><span class="service-row__index">02</span><h3>UX/UI design</h3><p>Rustige interfaces met sterke hiërarchie, duidelijke flows en premium details.</p></div><div class="service-row"><span class="service-row__index">03</span><h3>Development</h3><p>Snelle, responsive websites met onderhoudbare code en sterke technische basis.</p></div><div class="service-row"><span class="service-row__index">04</span><h3>Interactive web</h3><p>Scroll, motion en interacties die het verhaal versterken — nooit alleen voor effect.</p></div></div></div></section>
+<div class="service-row"><span class="service-row__index">01</span><h3>Strategy</h3><p>Positioning, structure and digital direction before the interface starts moving.</p></div><div class="service-row"><span class="service-row__index">02</span><h3>Experience Design</h3><p>UX/UI, responsive systems and art direction shaped into one distinct visual language.</p></div><div class="service-row"><span class="service-row__index">03</span><h3>Development</h3><p>Production code, CMS foundations and performance without flattening the design.</p></div><div class="service-row"><span class="service-row__index">04</span><h3>Interactive</h3><p>Motion, spatial interaction and scroll storytelling that make the experience memorable.</p></div></div></div></section>
 
 
 <section class="generative-scene" id="generative-directions"><div class="site-shell">
@@ -588,21 +713,27 @@ body.is-loading{overflow:hidden!important}
     <div class="design-stack__panel design-stack__panel--b">Interaction<b>Scroll / reveal</b></div>
     <div class="design-stack__panel design-stack__panel--c">Conversion route<b>Proof → trust → action</b></div>
     <div class="design-stack__panel design-stack__panel--d">Responsive<b>Desktop / tablet / mobile</b></div>
+    <div class="design-stack__panel design-stack__panel--e">Components<b>System / states</b></div>
+    <div class="design-stack__panel design-stack__panel--f">Art direction<b>Image / type / tone</b></div>
+    <div class="design-stack__panel design-stack__panel--g">Control strip<b>Prototype / 04</b></div>
   </div>
 </div></section><section class="story-scene adaptive-demo" id="adaptive-demo"><div class="adaptive-demo__sticky"><div class="site-shell adaptive-demo__layout">
-<div class="adaptive-demo__copy"><div class="scene-kicker">Adaptive websites</div><h2 class="scene-title">One site. Different intent.</h2><p>A useful website can change emphasis without changing its identity. The same business can lead with speed, story or conversion depending on what the visitor needs.</p><div class="intent-tabs"><button class="intent-tab is-active" data-mode="scan">Scan</button><button class="intent-tab" data-mode="story">Deep Dive</button><button class="intent-tab" data-mode="convert">Compare</button></div></div>
-<div class="intent-stage" data-mode="scan"><div class="intent-screen"><div class="intent-screen__bar"><b>KWIN / ADAPTIVE DEMO</b><span>Intent-aware composition</span></div><div class="intent-screen__body"><div class="intent-copy"><h3 data-intent-title>Get the point. Fast.</h3><p data-intent-copy>For visitors who need confidence quickly: message, proof, services and CTA move to the front.</p></div><div class="intent-visual"></div></div></div><div class="intent-detail intent-detail--signal"><small>Attention signal</small><b>03.4 sec</b></div><div class="intent-detail intent-detail--proof"><small>Proof module</small><b>Selected work</b></div><div class="intent-detail intent-detail--route"><small>Primary route</small><b>Start a project ↗</b></div></div>
+<div class="adaptive-demo__copy"><div class="scene-kicker">Adaptive websites</div><h2 class="scene-title">One site. Different intent.</h2><p>The same brand can lead with clarity, story or decision support depending on what the visitor needs in that moment.</p><div class="intent-tabs"><button class="intent-tab is-active" data-mode="overview" aria-pressed="true">Fast overview</button><button class="intent-tab" data-mode="story" aria-pressed="false">Brand story</button><button class="intent-tab" data-mode="decision" aria-pressed="false">Decision mode</button></div></div>
+<div class="intent-stage" data-mode="overview"><div class="intent-screen"><div class="intent-screen__bar"><b>KWIN / ADAPTIVE DEMO</b><span data-intent-mode>FAST OVERVIEW</span></div><div class="intent-screen__body"><div class="intent-copy"><h3 data-intent-title>Get the point. Fast.</h3><p data-intent-copy>Message, proof and the next action move to the front for visitors who need confidence quickly.</p><a class="intent-cta" href="/contact.html">Start a project ↗</a></div><div class="intent-visual"><div class="intent-visual__grid"><span></span><span></span><span></span><span></span></div></div><div class="intent-modules"><div class="intent-module intent-module--proof"><small>Proof</small><b>Selected directions</b></div><div class="intent-module intent-module--story"><small>Story</small><b>Point of view</b></div><div class="intent-module intent-module--action"><small>Action</small><b>Start a project</b></div></div></div></div><div class="intent-detail intent-detail--signal"><small>Attention signal</small><b>03.4 sec</b></div><div class="intent-detail intent-detail--proof"><small>Priority module</small><b>Proof first</b></div><div class="intent-detail intent-detail--route"><small>Primary route</small><b>Start a project ↗</b></div></div>
 </div></div></section>
 <section class="story-scene agent-scene" id="studio-agent"><div class="site-shell agent-grid">
-<div><div class="scene-kicker">From request to website</div><h2 class="scene-title">The studio becomes a system.</h2><p style="color:var(--muted);max-width:460px;line-height:1.6">A website build should feel coordinated. Research, structure, design, code and QA move as one process instead of disappearing into disconnected handoffs.</p></div>
+<div><div class="scene-kicker">From request to release</div><h2 class="scene-title">The studio becomes a system.</h2><p style="color:var(--muted);max-width:460px;line-height:1.6">One clear request moves through strategy, art direction, interface, development and QA without losing the original intent.</p><div class="agent-request"><small>Input</small><strong>Build a premium digital experience for a modern AI brand.</strong></div></div>
 <div class="agent-panel"><div class="agent-panel__top"><span>Kwin Studio / Build sequence</span><span class="agent-status">Running</span></div><div class="agent-feed">
-<div class="agent-line"><strong>01 / Decode</strong><span>Clarifying audience, offer, proof and commercial goal.</span></div>
-<div class="agent-line"><strong>02 / Structure</strong><span>Building the page hierarchy and conversion route.</span></div>
-<div class="agent-line"><strong>03 / Art direction</strong><span>Choosing type, spacing, color, imagery and motion language.</span></div>
-<div class="agent-line"><strong>04 / Build</strong><span>Turning the interface into responsive production code.</span></div>
-<div class="agent-line"><strong>05 / Verify</strong><span>Testing mobile, interactions, performance and real user flows.</span></div>
-<div class="agent-results"><div class="agent-result"><small>01 / Structure</small><b>Page system</b><span>Mapped</span></div><div class="agent-result"><small>02 / Interface</small><b>Visual language</b><span>Built</span></div><div class="agent-result"><small>03 / Release</small><b>Responsive QA</b><span>Verified</span></div></div>
-</div><div class="agent-prompt"><b>→</b><span>Build me a website that looks expensive, feels simple and makes people contact us.</span></div></div>
+<div class="agent-line"><strong>01 / Research</strong><span>Mapping audience, category signals, proof and differentiation.</span></div>
+<div class="agent-line"><strong>02 / Positioning</strong><span>Sharpening the message, promise and commercial point of view.</span></div>
+<div class="agent-line"><strong>03 / Information architecture</strong><span>Turning intent into a page system and conversion route.</span></div>
+<div class="agent-line"><strong>04 / Art direction</strong><span>Defining typography, image language, composition and motion.</span></div>
+<div class="agent-line"><strong>05 / Interface</strong><span>Building responsive states, components and interaction hierarchy.</span></div>
+<div class="agent-line"><strong>06 / Development</strong><span>Translating the system into fast, production-ready code.</span></div>
+<div class="agent-line"><strong>07 / Responsive QA</strong><span>Testing layout, interaction, accessibility and performance.</span></div>
+<div class="agent-line"><strong>08 / Launch</strong><span>Verifying the release path and shipping the final experience.</span></div>
+<div class="agent-artifacts"><div class="agent-artifact"><small>Research</small><b>Category map</b><span>Ready</span></div><div class="agent-artifact"><small>IA</small><b>Page map</b><span>Mapped</span></div><div class="agent-artifact"><small>Design</small><b>Component system</b><span>Built</span></div><div class="agent-artifact"><small>Browser</small><b>Responsive preview</b><span>Rendered</span></div><div class="agent-artifact"><small>QA</small><b>Release checks</b><span>Passing</span></div><div class="agent-artifact"><small>Final</small><b>Launch state</b><span>Ready</span></div></div>
+</div><div class="agent-prompt"><b>→</b><span>Strategy → Art direction → Interface → Development → QA → Launch</span></div></div>
 </div></section><section class="section section-rule"><div class="site-shell process"><div class="process__intro"><div class="eyebrow">Process</div><h2>Think.<br>Design.<br>Build.<br>Launch.</h2></div><div class="process__steps"><div class="process-step"><span class="process-step__num">01</span><div><h3>Discover</h3><p>We sharpen who the site is for, what it needs to say and which action matters most.</p></div></div><div class="process-step"><span class="process-step__num">02</span><div><h3>Design</h3><p>We turn the strategy into responsive UX and a distinct visual direction.</p></div></div><div class="process-step"><span class="process-step__num">03</span><div><h3>Build</h3><p>We develop the experience with clean code, performance and interaction in mind.</p></div></div><div class="process-step"><span class="process-step__num">04</span><div><h3>Launch</h3><p>We test the real flows, fix the rough edges and ship a website ready to sell.</p></div></div></div></div></section>
 <section class="studio-statement section section-rule" id="studio"><div class="site-shell"><div class="eyebrow">Why Kwin Studio</div><div class="studio-lines"><div>Custom, not templated.<small>01</small></div><div>Built for every screen.<small>02</small></div><div>Fast by default.<small>03</small></div><div>One partner to launch.<small>04</small></div></div></div></section>
 <section class="section section-rule"><div class="site-shell capabilities"><h2>Tools follow the idea, not the other way around.</h2><div class="capability-cloud"><span>Design</span><span>UX/UI</span><span>Next.js</span><span>React</span><span>TypeScript</span><span>Webflow</span><span>Shopify</span><span>CMS</span><span>Animation</span><span>SEO foundations</span><span>Performance</span><span>Responsive development</span></div></div></section>
@@ -621,10 +752,16 @@ body.is-loading{overflow:hidden!important}
 <div class="float-screen is-warm is-wide" data-x="27" data-y="43" data-z=".54"><i></i><b>Conversion route</b></div>
 <div class="float-screen is-dark" data-x="-27" data-y="42" data-z=".6"><i></i><b>Responsive detail</b></div>
 <div class="float-screen is-accent is-tall" data-x="6" data-y="-47" data-z=".5"><i></i><b>Launch layer</b></div>
+<div class="float-screen float-screen--secondary is-blue is-tall" data-x="-53" data-y="-34" data-z=".44"><i></i><b>Mobile narrative</b></div>
+<div class="float-screen float-screen--secondary is-dark is-wide" data-x="52" data-y="36" data-z=".47"><i></i><b>Service system</b></div>
+<div class="float-screen float-screen--secondary is-accent" data-x="-18" data-y="49" data-z=".43"><i></i><b>Conversion signal</b></div>
+<div class="float-screen float-screen--secondary is-warm is-tall" data-x="54" data-y="-38" data-z=".42"><i></i><b>Editorial layer</b></div>
+<div class="float-screen float-screen--secondary is-dark" data-x="-55" data-y="31" data-z=".45"><i></i><b>Interface detail</b></div>
+<div class="float-screen float-screen--secondary is-blue is-wide" data-x="21" data-y="-52" data-z=".4"><i></i><b>Launch system</b></div>
 </div></section>
 <section class="story-scene project-pass-scene" id="project-pass"><div class="site-shell project-pass-grid">
-<div class="project-pass-copy"><div class="scene-kicker">Kwin Project Pass</div><h2 class="scene-title">Skip the template maze.</h2><p>One route from idea to a live website: positioning, design, development, motion and launch in one studio.</p><a class="text-link" href="/contact.html">Start your project <span>↗</span></a></div>
-<div class="project-pass"><div class="pass-card"><div class="pass-card__top"><b>KWIN STUDIO</b><span>PROJECT PASS / 2026</span></div><div class="pass-card__main"><h3>FAST<br>TRACK</h3><div class="pass-hole"></div></div><div class="pass-card__bottom"><span>Strategy → Design → Build</span><b>ADMIT ONE IDEA</b></div></div></div>
+<div class="project-pass-copy"><div class="scene-kicker">Kwin Project Access</div><h2 class="scene-title">One idea. One system. One release.</h2><p>Strategy, design, development, interaction and launch move through one studio instead of a chain of disconnected handoffs.</p><a class="text-link" href="/contact.html">Start your project <span>↗</span></a></div>
+<div class="project-pass"><div class="pass-card"><div class="pass-card__rail">ACCESS / 0047 · ACTIVE</div><div class="pass-card__top"><b>KWIN STUDIO</b><span>PROJECT ACCESS / 2026</span></div><div class="pass-card__main"><h3>BUILD<br>PASS</h3><div class="pass-hole"></div></div><div class="pass-card__stages"><span>STRATEGY</span><span>DESIGN</span><span>BUILD</span><span>LAUNCH</span></div><div class="pass-card__bottom"><span>ONE IDEA · ONE SYSTEM</span><b>ONE RELEASE ↗</b></div></div></div>
 </div></section><section class="project-cta section-rule"><div class="site-shell"><div class="eyebrow">Have a project in mind?</div><h2 class="project-cta__title">Let’s build something people remember.</h2><a class="project-cta__link" href="/contact.html">Start<br>a project ↗</a></div></section>
 </main><footer class="site-footer"><div class="site-shell site-footer__inner"><span>© 2026 Kwin Studio</span><span>Websites built to stand out.</span></div></footer>
 <script id="kwin-motion-coordinator">
@@ -777,7 +914,7 @@ body.is-loading{overflow:hidden!important}
   const root=document.documentElement;
   const clamp=(n,a=0,b=1)=>Math.min(b,Math.max(a,n));
   const q=(s,r=document)=>r.querySelector(s), qa=(s,r=document)=>[...r.querySelectorAll(s)];
-  const rings=qa('.portal-stack .portal-ring');
+  const rings=qa('.portal-stack .portal-ring'),planes=qa('.gateway-plane'),aperture=q('.gateway-aperture');
   const hero=q('.hero'), work=q('#work'), track=q('#work .projects');
   const cursor=q('.motion-cursor');
   let lastY=scrollY,lastT=performance.now(),velocity=0,raf=0,mx=innerWidth/2,my=innerHeight/2,cx=mx,cy=my;
@@ -806,6 +943,15 @@ body.is-loading{overflow:hidden!important}
         ring.style.transform=`translate(-50%,-50%) translateZ(${z}px) scale(${scale}) rotate(${rot}deg)`;
         ring.style.opacity=String(clamp(.58-i*.075-p*.08,.08,.72));
       });
+      planes.forEach((plane,i)=>{
+        const dir=i?1:-1,scale=(i?.76:1.04)+p*(i?.62:.48);
+        plane.style.transform=`translate(-50%,-50%) translateZ(${dir*(80+p*90)}px) scale(${scale}) rotate(${dir*(2.5+p*4)}deg)`;
+        plane.style.opacity=String(clamp((i?.48:.3)+p*.12,.16,.64));
+      });
+      if(aperture){
+        aperture.style.transform=`translate(-50%,-50%) scale(${.72+p*2.15})`;
+        aperture.style.opacity=String(clamp(.72-p*.28,.25,.78));
+      }
     }
     if(work&&track&&innerWidth>=821){
       const p=workProgress();
@@ -839,16 +985,17 @@ body.is-loading{overflow:hidden!important}
  const clamp=(n,min=0,max=1)=>Math.min(max,Math.max(min,n));
  const tabs=[...document.querySelectorAll('.intent-tab')],stage=document.querySelector('.intent-stage');
  const title=document.querySelector('[data-intent-title]'),copy=document.querySelector('[data-intent-copy]');
+ const modeLabel=document.querySelector('[data-intent-mode]');
  const modes={
-  scan:['Get the point. Fast.','For visitors who need confidence quickly: message, proof, services and CTA move to the front.'],
-  story:['Make them feel the difference.','For visitors who want context: case studies, art direction and process take over the composition.'],
-  convert:['Make the next step irresistible.','For high intent visitors: proof compresses, friction disappears and the inquiry path becomes dominant.']
+  overview:['Get the point. Fast.','Message, proof and the next action move to the front for visitors who need confidence quickly.','FAST OVERVIEW'],
+  story:['Make them feel the difference.','Context, perspective and art direction take over when a visitor wants to understand the brand more deeply.','BRAND STORY'],
+  decision:['Make the next step obvious.','Proof compresses, comparison becomes clearer and the project route becomes visually dominant.','DECISION MODE']
  };
  tabs.forEach(t=>t.setAttribute('aria-pressed',String(t.classList.contains('is-active'))));
  tabs.forEach(tab=>tab.addEventListener('click',()=>{
    tabs.forEach(t=>{t.classList.toggle('is-active',t===tab);t.setAttribute('aria-pressed',String(t===tab));});
    const m=tab.dataset.mode; if(stage)stage.dataset.mode=m;
-   if(title)title.textContent=modes[m][0]; if(copy)copy.textContent=modes[m][1];
+   if(title)title.textContent=modes[m][0]; if(copy)copy.textContent=modes[m][1]; if(modeLabel)modeLabel.textContent=modes[m][2];
  }));
  const pass=document.querySelector('.pass-card');
  if(pass && matchMedia('(pointer:fine)').matches){
@@ -859,12 +1006,13 @@ body.is-loading{overflow:hidden!important}
   pass.parentElement.addEventListener('pointerleave',()=>pass.style.transform='');
  }
  if(reduce) return;
- const cards=[...document.querySelectorAll('.brief-card')],lines=[...document.querySelectorAll('.agent-line')],world=document.querySelector('.screen-world'),screens=[...document.querySelectorAll('.float-screen')];
+ const cards=[...document.querySelectorAll('.brief-card')],lines=[...document.querySelectorAll('.agent-line')],artifacts=[...document.querySelectorAll('.agent-artifact')],world=document.querySelector('.screen-world'),screens=[...document.querySelectorAll('.float-screen')],designStack=document.querySelector('.design-stack'),designPanels=[...document.querySelectorAll('.design-stack__panel')];
  function progress(el,start=.9,end=.12){const r=el.getBoundingClientRect(),vh=innerHeight;return clamp((vh*start-r.top)/(vh*(start-end)+r.height));}
  function update(){
   cards.forEach((card,i)=>{const p=progress(card,.98,.2),side=i%2?1:-1;card.style.transform=`translate3d(${side*(1-p)*4.5}vw,${(1-p)*70}px,0) rotate(${side*(1-p)*2.5}deg)`;card.style.opacity=String(.12+.88*p)});
+  if(designStack){const p=progress(designStack,.92,.12);designPanels.forEach((panel,i)=>{const side=i%2?1:-1,depth=(i%3)+1;panel.style.transform=`translate3d(${side*(1-p)*(26+depth*12)}px,${(1-p)*(42+depth*10)}px,0) rotate(${side*(1-p)*(3+depth)}deg) scale(${.92+p*.08})`;panel.style.opacity=String(.18+.82*p)})}
   const adaptive=document.querySelector('.adaptive-demo');if(adaptive&&stage){const p=progress(adaptive,.9,.08);stage.style.transform=`perspective(1400px) rotateX(${(p-.5)*2.5}deg) rotateY(${(.5-p)*4}deg) scale(${.95+.05*p})`}
-  const agent=document.querySelector('.agent-scene');if(agent){const p=progress(agent,.9,.18),done=Math.floor(p*(lines.length+1));lines.forEach((line,i)=>line.classList.toggle('is-done',i<done));const s=document.querySelector('.agent-status');if(s)s.textContent=done>=lines.length?'Verified':'Running'}
+  const agent=document.querySelector('.agent-scene');if(agent){const p=progress(agent,.9,.14),done=Math.floor(p*(lines.length+1)),artifactDone=Math.floor(clamp(p*1.12)*artifacts.length);lines.forEach((line,i)=>line.classList.toggle('is-done',i<done));artifacts.forEach((item,i)=>item.classList.toggle('is-done',i<artifactDone));const s=document.querySelector('.agent-status');if(s)s.textContent=done>=lines.length?'Ready to launch':'Running'}
   if(world){const r=world.getBoundingClientRect(),travel=Math.max(1,world.offsetHeight-innerHeight),p=clamp(-r.top/travel);screens.forEach((s,i)=>{const x=+s.dataset.x,y=+s.dataset.y,z=+s.dataset.z;const orbit=(p-.5)*2;s.style.transform=`translate3d(calc(-50% + ${x*(.3+p*.62)}vw),calc(-50% + ${y*(.3+p*.62)}vh),0) scale(${z*(.72+p*.3)}) rotateX(${(y/12)*orbit}deg) rotateY(${(-x/12)*orbit}deg) rotateZ(${(i%2?1:-1)*orbit*2.2}deg)`;s.style.opacity=String(.18+.82*Math.sin(Math.PI*clamp(p*1.15)))})}
  }
  window.__kwinMotion?.register(update);
