@@ -154,7 +154,7 @@ button { color: inherit; }
 .process-step h3 { font-size:clamp(34px,4vw,60px); letter-spacing:-.055em; margin:0 0 12px; line-height:.95; }
 .process-step p { color:var(--muted); margin:0; max-width:480px; line-height:1.55; }
 
-.studio-statement { min-height: 85svh; display:grid; align-items:center; }
+.studio-statement { min-height: 68svh; display:grid; align-items:center; }
 .studio-lines { font-size:clamp(48px,8.4vw,132px); letter-spacing:-.075em; line-height:.87; }
 .studio-lines div { border-bottom:1px solid var(--line); padding:10px 0 18px; display:flex; justify-content:space-between; gap:20px; }
 .studio-lines small { font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); align-self:flex-start; margin-top:12px; }
@@ -336,7 +336,7 @@ button { color: inherit; }
     #work .project{flex:0 0 min(78vw,1180px);width:min(78vw,1180px);grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr)}
     #work .project:nth-child(even){grid-template-columns:minmax(250px,.65fr) minmax(0,1.35fr)}
     #work .project__visual{min-height:min(58vw,690px)}
-    .transform{min-height:220svh}
+    .transform{min-height:155svh}
     .project-cta{min-height:145svh}
   }
   @media(max-width:820px){.motion-cursor{display:none}.portal-stack .portal-ring{width:72vw}.hero::after{display:none}}
@@ -347,8 +347,8 @@ button { color: inherit; }
 .story-scene{position:relative;overflow:clip;border-top:1px solid var(--line)}
 .story-scene .scene-kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
 .story-scene .scene-title{margin:14px 0 0;font-size:clamp(54px,8.7vw,138px);line-height:.82;letter-spacing:-.078em;max-width:9ch}
-.brief-wall{padding:clamp(110px,14vw,220px) 0}
-.brief-wall__intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:end;margin-bottom:70px}
+.brief-wall{padding:clamp(84px,10vw,150px) 0}
+.brief-wall__intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:end;margin-bottom:46px}
 .brief-wall__intro p{max-width:480px;color:var(--muted);line-height:1.6;margin:0}
 .brief-wall__grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;min-height:110vh;align-items:start}
 .brief-card{position:relative;min-height:300px;overflow:hidden;isolation:isolate;border:1px solid rgba(255,255,255,.08);background:#161616;transform-style:preserve-3d}
@@ -372,7 +372,7 @@ button { color: inherit; }
 .brief-card__reveal p{margin:0;color:#c7c4bc;line-height:1.45;font-size:13px;max-width:44ch}
 .brief-card:hover .brief-card__art{transform:scale(1.08);filter:saturate(1.25)}
 .brief-card:hover .brief-card__reveal{transform:translateY(0)}
-.adaptive-demo{min-height:230vh}
+.adaptive-demo{min-height:155vh}
 .adaptive-demo__sticky{position:sticky;top:0;min-height:100svh;display:grid;align-items:center}
 .adaptive-demo__layout{display:grid;grid-template-columns:.55fr 1.45fr;gap:7vw;align-items:center}
 .adaptive-demo__copy p{max-width:420px;color:var(--muted);line-height:1.6}
@@ -390,7 +390,7 @@ button { color: inherit; }
 .intent-visual::before,.intent-visual::after{content:"";position:absolute;border-radius:50%;border:1px solid #d7ff38}
 .intent-visual::before{width:58%;aspect-ratio:1;left:12%;top:10%}
 .intent-visual::after{width:38%;aspect-ratio:1;right:7%;bottom:8%}
-.agent-scene{padding:clamp(120px,16vw,240px) 0}
+.agent-scene{padding:clamp(88px,11vw,168px) 0}
 .agent-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:start}
 .agent-panel{border:1px solid var(--line);background:#0d0d0d;min-height:620px;display:grid;grid-template-rows:auto 1fr auto}
 .agent-panel__top{display:flex;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line);font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}
@@ -410,7 +410,7 @@ button { color: inherit; }
 .float-screen{position:absolute;width:clamp(150px,18vw,300px);aspect-ratio:1.45;border:1px solid rgba(255,255,255,.18);background:#eee;color:#111;box-shadow:0 35px 80px #0008;overflow:hidden;transform-style:preserve-3d}
 .float-screen i{display:block;height:22px;border-bottom:1px solid #bbb}
 .float-screen b{display:grid;place-items:center;height:calc(100% - 22px);font-size:clamp(18px,2vw,34px);letter-spacing:-.05em;padding:12px;text-align:center}
-.project-pass-scene{padding:clamp(120px,14vw,210px) 0}
+.project-pass-scene{padding:clamp(88px,10vw,150px) 0}
 .project-pass-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:center}
 .project-pass-copy p{max-width:420px;color:var(--muted);line-height:1.6}
 .project-pass{min-height:520px;position:relative;display:grid;place-items:center;perspective:1200px}
@@ -448,7 +448,7 @@ body.is-loading{overflow:hidden!important}
 .loader-progress{font-size:clamp(28px,4vw,62px);letter-spacing:-.06em}
 .loader-status{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#85827c;text-align:right}
 .loader-bar{position:absolute;left:0;bottom:0;height:2px;background:var(--accent);width:0;will-change:width}
-.generative-scene{padding:clamp(120px,16vw,240px) 0;border-top:1px solid var(--line);overflow:hidden}
+.generative-scene{padding:clamp(88px,11vw,168px) 0;border-top:1px solid var(--line);overflow:hidden}
 .generative-head{display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw;align-items:end;margin-bottom:60px}
 .generative-head h2{font-size:clamp(58px,8vw,128px);line-height:.82;letter-spacing:-.075em;margin:12px 0 0;max-width:8ch}
 .generative-head p{max-width:430px;color:var(--muted);line-height:1.6}
@@ -552,7 +552,7 @@ body.is-loading{overflow:hidden!important}
 @media(prefers-reduced-motion:reduce){.gateway-plane,.gateway-aperture,.gateway-axis{display:none!important}}
 </style>
 <style id="portal-v2-density-css">
-.brief-wall__grid{min-height:226vh}
+.brief-wall__grid{min-height:190vh}
 .brief-card:nth-child(11){grid-column:2/span 4;margin-top:40px;min-height:360px}
 .brief-card:nth-child(12){grid-column:7/span 5;margin-top:-40px;min-height:470px}
 .brief-card:nth-child(13){grid-column:1/span 5;margin-top:95px;min-height:430px}
@@ -615,7 +615,7 @@ body.is-loading{overflow:hidden!important}
 @media(max-width:520px){.intent-modules{grid-template-columns:1fr}.agent-artifacts{grid-template-columns:1fr}.agent-panel{min-height:auto}.agent-feed{overflow:visible}}
 </style>
 <style id="portal-v2-screen-pass-css">
-.screen-world{min-height:250vh}
+.screen-world{min-height:175vh}
 .float-screen--secondary{width:clamp(120px,14vw,235px)}
 .project-pass{min-height:610px}
 .pass-card{position:relative;aspect-ratio:1.62;grid-template-rows:auto auto 1fr auto auto;overflow:hidden;background:linear-gradient(145deg,#eee9dd,#d7d2c7 68%,#c8c2b5)}
@@ -630,7 +630,7 @@ body.is-loading{overflow:hidden!important}
 </style>
 <style id="portal-v2-responsive-hardening">
 @media(min-width:821px) and (prefers-reduced-motion:no-preference){
-  #work{height:360svh}
+  #work{height:300svh}
 }
 @media(min-width:821px) and (max-width:1100px){
   #work .project{flex-basis:84vw;width:84vw}
@@ -657,6 +657,21 @@ body.is-loading{overflow:hidden!important}
   .intent-tab{padding:9px 10px;font-size:12px}
   .pass-card{padding:18px}
   .pass-card__rail{margin:-18px -18px 10px}
+}
+</style>
+<style id="compact-scroll-rhythm-css">
+.agent-scene + .section{padding-block:clamp(72px,8vw,120px)}
+.studio-statement + .section{padding-block:clamp(72px,8vw,120px)}
+@media(max-width:820px){
+  .brief-wall{padding:82px 0}
+  .generative-scene,.agent-scene,.project-pass-scene{padding-top:82px;padding-bottom:82px}
+  .agent-scene + .section,.studio-statement + .section{padding-block:76px}
+  .studio-statement{min-height:auto}
+}
+@media(max-width:520px){
+  .brief-wall{padding:68px 0}
+  .generative-scene,.agent-scene,.project-pass-scene{padding-top:68px;padding-bottom:68px}
+  .agent-scene + .section,.studio-statement + .section{padding-block:64px}
 }
 </style>
 <style id="recovery-input-css">@media (hover:none),(pointer:coarse){.motion-cursor{display:none!important}.brief-card__reveal{transform:none!important}.brief-card__art{transform:scale(1.02)}}</style></head><body>
@@ -1013,7 +1028,7 @@ body.is-loading{overflow:hidden!important}
   if(designStack){const p=progress(designStack,.92,.12);designPanels.forEach((panel,i)=>{const side=i%2?1:-1,depth=(i%3)+1;panel.style.transform=`translate3d(${side*(1-p)*(26+depth*12)}px,${(1-p)*(42+depth*10)}px,0) rotate(${side*(1-p)*(3+depth)}deg) scale(${.92+p*.08})`;panel.style.opacity=String(.18+.82*p)})}
   const adaptive=document.querySelector('.adaptive-demo');if(adaptive&&stage){const p=progress(adaptive,.9,.08);stage.style.transform=`perspective(1400px) rotateX(${(p-.5)*2.5}deg) rotateY(${(.5-p)*4}deg) scale(${.95+.05*p})`}
   const agent=document.querySelector('.agent-scene');if(agent){const p=progress(agent,.9,.14),done=Math.floor(p*(lines.length+1)),artifactDone=Math.floor(clamp(p*1.12)*artifacts.length);lines.forEach((line,i)=>line.classList.toggle('is-done',i<done));artifacts.forEach((item,i)=>item.classList.toggle('is-done',i<artifactDone));const s=document.querySelector('.agent-status');if(s)s.textContent=done>=lines.length?'Ready to launch':'Running'}
-  if(world){const r=world.getBoundingClientRect(),travel=Math.max(1,world.offsetHeight-innerHeight),p=clamp(-r.top/travel);screens.forEach((s,i)=>{const x=+s.dataset.x,y=+s.dataset.y,z=+s.dataset.z;const orbit=(p-.5)*2;s.style.transform=`translate3d(calc(-50% + ${x*(.3+p*.62)}vw),calc(-50% + ${y*(.3+p*.62)}vh),0) scale(${z*(.72+p*.3)}) rotateX(${(y/12)*orbit}deg) rotateY(${(-x/12)*orbit}deg) rotateZ(${(i%2?1:-1)*orbit*2.2}deg)`;s.style.opacity=String(.18+.82*Math.sin(Math.PI*clamp(p*1.15)))})}
+  if(world){const r=world.getBoundingClientRect(),travel=Math.max(1,world.offsetHeight-innerHeight),p=clamp(-r.top/travel);screens.forEach((s,i)=>{const x=+s.dataset.x,y=+s.dataset.y,z=+s.dataset.z;const orbit=(p-.5)*2;s.style.transform=`translate3d(calc(-50% + ${x*(.3+p*.62)}vw),calc(-50% + ${y*(.3+p*.62)}vh),0) scale(${z*(.72+p*.3)}) rotateX(${(y/12)*orbit}deg) rotateY(${(-x/12)*orbit}deg) rotateZ(${(i%2?1:-1)*orbit*2.2}deg)`;const visibility=Math.min(clamp(p/.12),clamp((1-p)/.08));s.style.opacity=String(.18+.82*visibility)})}
  }
  window.__kwinMotion?.register(update);
 })();
