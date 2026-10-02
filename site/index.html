@@ -555,6 +555,33 @@ body.is-loading{overflow:hidden!important}
 @media(max-width:820px){.gateway-plane{width:76vw}.gateway-plane--back{width:94vw}.gateway-plane--front{width:58vw}.gateway-aperture{width:34vw}.gateway-axis--y{height:56vh}}
 @media(prefers-reduced-motion:reduce){.gateway-plane,.gateway-aperture,.gateway-axis{display:none!important}}
 </style>
+<style id="portal-v2-density-css">
+.brief-wall__grid{min-height:226vh}
+.brief-card:nth-child(11){grid-column:2/span 4;margin-top:40px;min-height:360px}
+.brief-card:nth-child(12){grid-column:7/span 5;margin-top:-40px;min-height:470px}
+.brief-card:nth-child(13){grid-column:1/span 5;margin-top:95px;min-height:430px}
+.brief-card:nth-child(14){grid-column:8/span 4;margin-top:22px;min-height:390px}
+.brief-card:nth-child(11) .brief-card__art{background:linear-gradient(135deg,#111 0 36%,#d29b80 36% 62%,#eee8dc 62%)}
+.brief-card:nth-child(12) .brief-card__art{background:radial-gradient(circle at 54% 44%,#d7ff38 0 9%,transparent 10%),linear-gradient(110deg,#0d0d0d 0 52%,#c7e9f7 52%)}
+.brief-card:nth-child(13) .brief-card__art{background:linear-gradient(155deg,#ece8df 0 40%,#111 40% 72%,#d7ff38 72%)}
+.brief-card:nth-child(14) .brief-card__art{background:repeating-linear-gradient(90deg,#111 0 32px,#d7ff38 32px 34px,#111 34px 68px)}
+.design-stack{min-height:920px}
+.design-stack__panel--e{left:23%;top:7%;width:176px;transform:rotate(3deg)}
+.design-stack__panel--f{right:20%;bottom:5%;width:206px;transform:rotate(4deg)}
+.design-stack__panel--g{left:38%;bottom:2%;width:236px;transform:rotate(-2deg)}
+@media(max-width:820px){
+ .brief-wall__grid{min-height:auto}
+ .brief-card,.brief-card:nth-child(n){grid-column:auto;margin-top:0;min-height:54vw}
+ .design-stack{min-height:720px}
+ .design-stack__panel--e{left:22%;top:4%;width:140px}
+ .design-stack__panel--f{right:18%;bottom:4%;width:150px}
+ .design-stack__panel--g{left:34%;bottom:1%;width:160px}
+}
+@media(max-width:520px){
+ .brief-card,.brief-card:nth-child(n){min-height:85vw}
+ .design-stack__panel--e,.design-stack__panel--f,.design-stack__panel--g{display:none}
+}
+</style>
 <style id="recovery-input-css">@media (hover:none),(pointer:coarse){.motion-cursor{display:none!important}.brief-card__reveal{transform:none!important}.brief-card__art{transform:scale(1.02)}}</style></head><body>
 <div id="kwin-loader" aria-hidden="true">
   <div class="loader-noise"></div><div class="loader-portal"></div>
@@ -588,6 +615,10 @@ body.is-loading{overflow:hidden!important}
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Product story</span><div class="brief-card__reveal"><b>Show before you explain.</b><p>Layered product moments reveal value progressively instead of forcing visitors through walls of copy.</p></div></article>
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Responsive detail</span><div class="brief-card__reveal"><b>Design the small screen on purpose.</b><p>Mobile gets its own rhythm, hierarchy and interaction logic rather than a compressed desktop.</p></div></article>
 <article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Launch system</span><div class="brief-card__reveal"><b>Turn the concept into a complete release.</b><p>Design, motion, performance and QA stay connected all the way to the live website.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Luxury hospitality</span><div class="brief-card__reveal"><b>Make atmosphere part of the interface.</b><p>Editorial pacing, material detail and a direct reservation path without losing the mood.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">AI product</span><div class="brief-card__reveal"><b>Turn complexity into confidence.</b><p>Technical products become legible through hierarchy, interaction and carefully staged proof.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Architecture</span><div class="brief-card__reveal"><b>Let structure become the story.</b><p>Projects, point of view and process share one spatial rhythm across every screen.</p></div></article>
+<article class="brief-card"><div class="brief-card__art"></div><span class="brief-card__label">Creative brand</span><div class="brief-card__reveal"><b>Build identity into motion.</b><p>Campaign energy, type and interface behavior move together instead of living in separate layers.</p></div></article>
 </div></div></section><section class="section section-rule" id="services"><div class="site-shell"><div class="section-heading"><div><div class="eyebrow">Services</div><h2>Everything a strong website needs.</h2></div><p>One studio from positioning and UX to development and launch. We keep the process compact and the output considered.</p></div><div class="services-list">
 <div class="service-row"><span class="service-row__index">01</span><h3>Strategy</h3><p>Positioning, structure and digital direction before the interface starts moving.</p></div><div class="service-row"><span class="service-row__index">02</span><h3>Experience Design</h3><p>UX/UI, responsive systems and art direction shaped into one distinct visual language.</p></div><div class="service-row"><span class="service-row__index">03</span><h3>Development</h3><p>Production code, CMS foundations and performance without flattening the design.</p></div><div class="service-row"><span class="service-row__index">04</span><h3>Interactive</h3><p>Motion, spatial interaction and scroll storytelling that make the experience memorable.</p></div></div></div></section>
 
@@ -605,6 +636,9 @@ body.is-loading{overflow:hidden!important}
     <div class="design-stack__panel design-stack__panel--b">Interaction<b>Scroll / reveal</b></div>
     <div class="design-stack__panel design-stack__panel--c">Conversion route<b>Proof → trust → action</b></div>
     <div class="design-stack__panel design-stack__panel--d">Responsive<b>Desktop / tablet / mobile</b></div>
+    <div class="design-stack__panel design-stack__panel--e">Components<b>System / states</b></div>
+    <div class="design-stack__panel design-stack__panel--f">Art direction<b>Image / type / tone</b></div>
+    <div class="design-stack__panel design-stack__panel--g">Control strip<b>Prototype / 04</b></div>
   </div>
 </div></section><section class="story-scene adaptive-demo" id="adaptive-demo"><div class="adaptive-demo__sticky"><div class="site-shell adaptive-demo__layout">
 <div class="adaptive-demo__copy"><div class="scene-kicker">Adaptive websites</div><h2 class="scene-title">One site. Different intent.</h2><p>A useful website can change emphasis without changing its identity. The same business can lead with speed, story or conversion depending on what the visitor needs.</p><div class="intent-tabs"><button class="intent-tab is-active" data-mode="scan">Scan</button><button class="intent-tab" data-mode="story">Deep Dive</button><button class="intent-tab" data-mode="convert">Compare</button></div></div>
@@ -885,10 +919,11 @@ body.is-loading{overflow:hidden!important}
   pass.parentElement.addEventListener('pointerleave',()=>pass.style.transform='');
  }
  if(reduce) return;
- const cards=[...document.querySelectorAll('.brief-card')],lines=[...document.querySelectorAll('.agent-line')],world=document.querySelector('.screen-world'),screens=[...document.querySelectorAll('.float-screen')];
+ const cards=[...document.querySelectorAll('.brief-card')],lines=[...document.querySelectorAll('.agent-line')],world=document.querySelector('.screen-world'),screens=[...document.querySelectorAll('.float-screen')],designStack=document.querySelector('.design-stack'),designPanels=[...document.querySelectorAll('.design-stack__panel')];
  function progress(el,start=.9,end=.12){const r=el.getBoundingClientRect(),vh=innerHeight;return clamp((vh*start-r.top)/(vh*(start-end)+r.height));}
  function update(){
   cards.forEach((card,i)=>{const p=progress(card,.98,.2),side=i%2?1:-1;card.style.transform=`translate3d(${side*(1-p)*4.5}vw,${(1-p)*70}px,0) rotate(${side*(1-p)*2.5}deg)`;card.style.opacity=String(.12+.88*p)});
+  if(designStack){const p=progress(designStack,.92,.12);designPanels.forEach((panel,i)=>{const side=i%2?1:-1,depth=(i%3)+1;panel.style.transform=`translate3d(${side*(1-p)*(26+depth*12)}px,${(1-p)*(42+depth*10)}px,0) rotate(${side*(1-p)*(3+depth)}deg) scale(${.92+p*.08})`;panel.style.opacity=String(.18+.82*p)})}
   const adaptive=document.querySelector('.adaptive-demo');if(adaptive&&stage){const p=progress(adaptive,.9,.08);stage.style.transform=`perspective(1400px) rotateX(${(p-.5)*2.5}deg) rotateY(${(.5-p)*4}deg) scale(${.95+.05*p})`}
   const agent=document.querySelector('.agent-scene');if(agent){const p=progress(agent,.9,.18),done=Math.floor(p*(lines.length+1));lines.forEach((line,i)=>line.classList.toggle('is-done',i<done));const s=document.querySelector('.agent-status');if(s)s.textContent=done>=lines.length?'Verified':'Running'}
   if(world){const r=world.getBoundingClientRect(),travel=Math.max(1,world.offsetHeight-innerHeight),p=clamp(-r.top/travel);screens.forEach((s,i)=>{const x=+s.dataset.x,y=+s.dataset.y,z=+s.dataset.z;const orbit=(p-.5)*2;s.style.transform=`translate3d(calc(-50% + ${x*(.3+p*.62)}vw),calc(-50% + ${y*(.3+p*.62)}vh),0) scale(${z*(.72+p*.3)}) rotateX(${(y/12)*orbit}deg) rotateY(${(-x/12)*orbit}deg) rotateZ(${(i%2?1:-1)*orbit*2.2}deg)`;s.style.opacity=String(.18+.82*Math.sin(Math.PI*clamp(p*1.15)))})}
