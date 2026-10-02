@@ -582,6 +582,34 @@ body.is-loading{overflow:hidden!important}
  .design-stack__panel--e,.design-stack__panel--f,.design-stack__panel--g{display:none}
 }
 </style>
+<style id="portal-v2-stateful-css">
+.intent-screen__body{grid-template-columns:.86fr 1.14fr;grid-template-rows:1fr auto;transition:grid-template-columns .7s var(--ease)}
+.intent-copy{position:relative;z-index:2}.intent-cta{display:inline-flex;align-self:flex-start;border-bottom:1px solid #111;padding-bottom:5px;font-size:11px;text-transform:uppercase;letter-spacing:.12em}
+.intent-visual__grid{position:absolute;inset:9%;display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.intent-visual__grid span{border:1px solid rgba(215,255,56,.55);background:linear-gradient(145deg,rgba(215,255,56,.12),transparent)}
+.intent-modules{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.intent-module{border:1px solid #d4d0c8;padding:10px 12px;min-height:72px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .7s var(--ease),opacity .45s ease,background .45s ease}
+.intent-module small{font-size:8px;text-transform:uppercase;letter-spacing:.13em;color:#777}.intent-module b{font-size:14px;letter-spacing:-.03em}
+.intent-stage[data-mode="overview"] .intent-screen{transform:rotateY(-2deg) translateX(0) scale(.96)}
+.intent-stage[data-mode="overview"] .intent-module--proof{background:#111;color:#fff;transform:translateY(-6px)}
+.intent-stage[data-mode="story"] .intent-screen{transform:rotateY(-7deg) translateX(-3%) scale(.93)}
+.intent-stage[data-mode="story"] .intent-screen__body{grid-template-columns:1.18fr .82fr}
+.intent-stage[data-mode="story"] .intent-copy h3{font-size:clamp(50px,6.8vw,98px)}
+.intent-stage[data-mode="story"] .intent-module--story{background:#111;color:#fff;transform:translateY(-8px)}
+.intent-stage[data-mode="story"] .intent-visual{background:#c7e9f7}
+.intent-stage[data-mode="decision"] .intent-screen{transform:rotateY(7deg) translateX(4%) scale(.965)}
+.intent-stage[data-mode="decision"] .intent-screen__body{grid-template-columns:.68fr 1.32fr}
+.intent-stage[data-mode="decision"] .intent-module--action{background:#d7ff38;transform:translateY(-10px) scale(1.03)}
+.intent-stage[data-mode="decision"] .intent-cta{background:#111;color:#fff;padding:10px 12px;border:0}
+.intent-stage[data-mode="decision"] .intent-visual{background:#d7ff38}
+.agent-request{margin-top:38px;border-left:1px solid var(--accent);padding:13px 0 13px 16px;max-width:390px}.agent-request small{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.14em;margin-bottom:8px}.agent-request strong{font-size:16px;line-height:1.4;font-weight:500}
+.agent-panel{min-height:780px}
+.agent-artifacts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.agent-artifact{border:1px solid #292929;background:#111;min-height:98px;padding:10px;display:flex;flex-direction:column;justify-content:space-between;opacity:.42;transform:translateY(14px);transition:opacity .45s ease,transform .45s var(--ease)}
+.agent-artifact.is-done{opacity:1;transform:none}.agent-artifact small{font-size:8px;color:#777;text-transform:uppercase;letter-spacing:.13em}.agent-artifact b{font-size:13px}.agent-artifact span{font-size:8px;color:var(--accent);text-transform:uppercase;letter-spacing:.11em}
+@media(max-width:820px){.intent-screen__body{grid-template-columns:1fr!important}.intent-modules{grid-template-columns:1fr 1fr}.agent-panel{min-height:690px}.agent-artifacts{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.intent-modules{grid-template-columns:1fr}.agent-artifacts{grid-template-columns:1fr}.agent-panel{min-height:auto}.agent-feed{overflow:visible}}
+</style>
 <style id="recovery-input-css">@media (hover:none),(pointer:coarse){.motion-cursor{display:none!important}.brief-card__reveal{transform:none!important}.brief-card__art{transform:scale(1.02)}}</style></head><body>
 <div id="kwin-loader" aria-hidden="true">
   <div class="loader-noise"></div><div class="loader-portal"></div>
@@ -641,19 +669,22 @@ body.is-loading{overflow:hidden!important}
     <div class="design-stack__panel design-stack__panel--g">Control strip<b>Prototype / 04</b></div>
   </div>
 </div></section><section class="story-scene adaptive-demo" id="adaptive-demo"><div class="adaptive-demo__sticky"><div class="site-shell adaptive-demo__layout">
-<div class="adaptive-demo__copy"><div class="scene-kicker">Adaptive websites</div><h2 class="scene-title">One site. Different intent.</h2><p>A useful website can change emphasis without changing its identity. The same business can lead with speed, story or conversion depending on what the visitor needs.</p><div class="intent-tabs"><button class="intent-tab is-active" data-mode="scan">Scan</button><button class="intent-tab" data-mode="story">Deep Dive</button><button class="intent-tab" data-mode="convert">Compare</button></div></div>
-<div class="intent-stage" data-mode="scan"><div class="intent-screen"><div class="intent-screen__bar"><b>KWIN / ADAPTIVE DEMO</b><span>Intent-aware composition</span></div><div class="intent-screen__body"><div class="intent-copy"><h3 data-intent-title>Get the point. Fast.</h3><p data-intent-copy>For visitors who need confidence quickly: message, proof, services and CTA move to the front.</p></div><div class="intent-visual"></div></div></div><div class="intent-detail intent-detail--signal"><small>Attention signal</small><b>03.4 sec</b></div><div class="intent-detail intent-detail--proof"><small>Proof module</small><b>Selected work</b></div><div class="intent-detail intent-detail--route"><small>Primary route</small><b>Start a project ↗</b></div></div>
+<div class="adaptive-demo__copy"><div class="scene-kicker">Adaptive websites</div><h2 class="scene-title">One site. Different intent.</h2><p>The same brand can lead with clarity, story or decision support depending on what the visitor needs in that moment.</p><div class="intent-tabs"><button class="intent-tab is-active" data-mode="overview">Fast overview</button><button class="intent-tab" data-mode="story">Brand story</button><button class="intent-tab" data-mode="decision">Decision mode</button></div></div>
+<div class="intent-stage" data-mode="overview"><div class="intent-screen"><div class="intent-screen__bar"><b>KWIN / ADAPTIVE DEMO</b><span data-intent-mode>FAST OVERVIEW</span></div><div class="intent-screen__body"><div class="intent-copy"><h3 data-intent-title>Get the point. Fast.</h3><p data-intent-copy>Message, proof and the next action move to the front for visitors who need confidence quickly.</p><a class="intent-cta" href="/contact.html">Start a project ↗</a></div><div class="intent-visual"><div class="intent-visual__grid"><span></span><span></span><span></span><span></span></div></div><div class="intent-modules"><div class="intent-module intent-module--proof"><small>Proof</small><b>Selected directions</b></div><div class="intent-module intent-module--story"><small>Story</small><b>Point of view</b></div><div class="intent-module intent-module--action"><small>Action</small><b>Start a project</b></div></div></div></div><div class="intent-detail intent-detail--signal"><small>Attention signal</small><b>03.4 sec</b></div><div class="intent-detail intent-detail--proof"><small>Priority module</small><b>Proof first</b></div><div class="intent-detail intent-detail--route"><small>Primary route</small><b>Start a project ↗</b></div></div>
 </div></div></section>
 <section class="story-scene agent-scene" id="studio-agent"><div class="site-shell agent-grid">
-<div><div class="scene-kicker">From request to website</div><h2 class="scene-title">The studio becomes a system.</h2><p style="color:var(--muted);max-width:460px;line-height:1.6">A website build should feel coordinated. Research, structure, design, code and QA move as one process instead of disappearing into disconnected handoffs.</p></div>
+<div><div class="scene-kicker">From request to release</div><h2 class="scene-title">The studio becomes a system.</h2><p style="color:var(--muted);max-width:460px;line-height:1.6">One clear request moves through strategy, art direction, interface, development and QA without losing the original intent.</p><div class="agent-request"><small>Input</small><strong>Build a premium digital experience for a modern AI brand.</strong></div></div>
 <div class="agent-panel"><div class="agent-panel__top"><span>Kwin Studio / Build sequence</span><span class="agent-status">Running</span></div><div class="agent-feed">
-<div class="agent-line"><strong>01 / Decode</strong><span>Clarifying audience, offer, proof and commercial goal.</span></div>
-<div class="agent-line"><strong>02 / Structure</strong><span>Building the page hierarchy and conversion route.</span></div>
-<div class="agent-line"><strong>03 / Art direction</strong><span>Choosing type, spacing, color, imagery and motion language.</span></div>
-<div class="agent-line"><strong>04 / Build</strong><span>Turning the interface into responsive production code.</span></div>
-<div class="agent-line"><strong>05 / Verify</strong><span>Testing mobile, interactions, performance and real user flows.</span></div>
-<div class="agent-results"><div class="agent-result"><small>01 / Structure</small><b>Page system</b><span>Mapped</span></div><div class="agent-result"><small>02 / Interface</small><b>Visual language</b><span>Built</span></div><div class="agent-result"><small>03 / Release</small><b>Responsive QA</b><span>Verified</span></div></div>
-</div><div class="agent-prompt"><b>→</b><span>Build me a website that looks expensive, feels simple and makes people contact us.</span></div></div>
+<div class="agent-line"><strong>01 / Research</strong><span>Mapping audience, category signals, proof and differentiation.</span></div>
+<div class="agent-line"><strong>02 / Positioning</strong><span>Sharpening the message, promise and commercial point of view.</span></div>
+<div class="agent-line"><strong>03 / Information architecture</strong><span>Turning intent into a page system and conversion route.</span></div>
+<div class="agent-line"><strong>04 / Art direction</strong><span>Defining typography, image language, composition and motion.</span></div>
+<div class="agent-line"><strong>05 / Interface</strong><span>Building responsive states, components and interaction hierarchy.</span></div>
+<div class="agent-line"><strong>06 / Development</strong><span>Translating the system into fast, production-ready code.</span></div>
+<div class="agent-line"><strong>07 / Responsive QA</strong><span>Testing layout, interaction, accessibility and performance.</span></div>
+<div class="agent-line"><strong>08 / Launch</strong><span>Verifying the release path and shipping the final experience.</span></div>
+<div class="agent-artifacts"><div class="agent-artifact"><small>Research</small><b>Category map</b><span>Ready</span></div><div class="agent-artifact"><small>IA</small><b>Page map</b><span>Mapped</span></div><div class="agent-artifact"><small>Design</small><b>Component system</b><span>Built</span></div><div class="agent-artifact"><small>Browser</small><b>Responsive preview</b><span>Rendered</span></div><div class="agent-artifact"><small>QA</small><b>Release checks</b><span>Passing</span></div><div class="agent-artifact"><small>Final</small><b>Launch state</b><span>Ready</span></div></div>
+</div><div class="agent-prompt"><b>→</b><span>Strategy → Art direction → Interface → Development → QA → Launch</span></div></div>
 </div></section><section class="section section-rule"><div class="site-shell process"><div class="process__intro"><div class="eyebrow">Process</div><h2>Think.<br>Design.<br>Build.<br>Launch.</h2></div><div class="process__steps"><div class="process-step"><span class="process-step__num">01</span><div><h3>Discover</h3><p>We sharpen who the site is for, what it needs to say and which action matters most.</p></div></div><div class="process-step"><span class="process-step__num">02</span><div><h3>Design</h3><p>We turn the strategy into responsive UX and a distinct visual direction.</p></div></div><div class="process-step"><span class="process-step__num">03</span><div><h3>Build</h3><p>We develop the experience with clean code, performance and interaction in mind.</p></div></div><div class="process-step"><span class="process-step__num">04</span><div><h3>Launch</h3><p>We test the real flows, fix the rough edges and ship a website ready to sell.</p></div></div></div></div></section>
 <section class="studio-statement section section-rule" id="studio"><div class="site-shell"><div class="eyebrow">Why Kwin Studio</div><div class="studio-lines"><div>Custom, not templated.<small>01</small></div><div>Built for every screen.<small>02</small></div><div>Fast by default.<small>03</small></div><div>One partner to launch.<small>04</small></div></div></div></section>
 <section class="section section-rule"><div class="site-shell capabilities"><h2>Tools follow the idea, not the other way around.</h2><div class="capability-cloud"><span>Design</span><span>UX/UI</span><span>Next.js</span><span>React</span><span>TypeScript</span><span>Webflow</span><span>Shopify</span><span>CMS</span><span>Animation</span><span>SEO foundations</span><span>Performance</span><span>Responsive development</span></div></div></section>
@@ -899,16 +930,17 @@ body.is-loading{overflow:hidden!important}
  const clamp=(n,min=0,max=1)=>Math.min(max,Math.max(min,n));
  const tabs=[...document.querySelectorAll('.intent-tab')],stage=document.querySelector('.intent-stage');
  const title=document.querySelector('[data-intent-title]'),copy=document.querySelector('[data-intent-copy]');
+ const modeLabel=document.querySelector('[data-intent-mode]');
  const modes={
-  scan:['Get the point. Fast.','For visitors who need confidence quickly: message, proof, services and CTA move to the front.'],
-  story:['Make them feel the difference.','For visitors who want context: case studies, art direction and process take over the composition.'],
-  convert:['Make the next step irresistible.','For high intent visitors: proof compresses, friction disappears and the inquiry path becomes dominant.']
+  overview:['Get the point. Fast.','Message, proof and the next action move to the front for visitors who need confidence quickly.','FAST OVERVIEW'],
+  story:['Make them feel the difference.','Context, perspective and art direction take over when a visitor wants to understand the brand more deeply.','BRAND STORY'],
+  decision:['Make the next step obvious.','Proof compresses, comparison becomes clearer and the project route becomes visually dominant.','DECISION MODE']
  };
  tabs.forEach(t=>t.setAttribute('aria-pressed',String(t.classList.contains('is-active'))));
  tabs.forEach(tab=>tab.addEventListener('click',()=>{
    tabs.forEach(t=>{t.classList.toggle('is-active',t===tab);t.setAttribute('aria-pressed',String(t===tab));});
    const m=tab.dataset.mode; if(stage)stage.dataset.mode=m;
-   if(title)title.textContent=modes[m][0]; if(copy)copy.textContent=modes[m][1];
+   if(title)title.textContent=modes[m][0]; if(copy)copy.textContent=modes[m][1]; if(modeLabel)modeLabel.textContent=modes[m][2];
  }));
  const pass=document.querySelector('.pass-card');
  if(pass && matchMedia('(pointer:fine)').matches){
@@ -919,13 +951,13 @@ body.is-loading{overflow:hidden!important}
   pass.parentElement.addEventListener('pointerleave',()=>pass.style.transform='');
  }
  if(reduce) return;
- const cards=[...document.querySelectorAll('.brief-card')],lines=[...document.querySelectorAll('.agent-line')],world=document.querySelector('.screen-world'),screens=[...document.querySelectorAll('.float-screen')],designStack=document.querySelector('.design-stack'),designPanels=[...document.querySelectorAll('.design-stack__panel')];
+ const cards=[...document.querySelectorAll('.brief-card')],lines=[...document.querySelectorAll('.agent-line')],artifacts=[...document.querySelectorAll('.agent-artifact')],world=document.querySelector('.screen-world'),screens=[...document.querySelectorAll('.float-screen')],designStack=document.querySelector('.design-stack'),designPanels=[...document.querySelectorAll('.design-stack__panel')];
  function progress(el,start=.9,end=.12){const r=el.getBoundingClientRect(),vh=innerHeight;return clamp((vh*start-r.top)/(vh*(start-end)+r.height));}
  function update(){
   cards.forEach((card,i)=>{const p=progress(card,.98,.2),side=i%2?1:-1;card.style.transform=`translate3d(${side*(1-p)*4.5}vw,${(1-p)*70}px,0) rotate(${side*(1-p)*2.5}deg)`;card.style.opacity=String(.12+.88*p)});
   if(designStack){const p=progress(designStack,.92,.12);designPanels.forEach((panel,i)=>{const side=i%2?1:-1,depth=(i%3)+1;panel.style.transform=`translate3d(${side*(1-p)*(26+depth*12)}px,${(1-p)*(42+depth*10)}px,0) rotate(${side*(1-p)*(3+depth)}deg) scale(${.92+p*.08})`;panel.style.opacity=String(.18+.82*p)})}
   const adaptive=document.querySelector('.adaptive-demo');if(adaptive&&stage){const p=progress(adaptive,.9,.08);stage.style.transform=`perspective(1400px) rotateX(${(p-.5)*2.5}deg) rotateY(${(.5-p)*4}deg) scale(${.95+.05*p})`}
-  const agent=document.querySelector('.agent-scene');if(agent){const p=progress(agent,.9,.18),done=Math.floor(p*(lines.length+1));lines.forEach((line,i)=>line.classList.toggle('is-done',i<done));const s=document.querySelector('.agent-status');if(s)s.textContent=done>=lines.length?'Verified':'Running'}
+  const agent=document.querySelector('.agent-scene');if(agent){const p=progress(agent,.9,.14),done=Math.floor(p*(lines.length+1)),artifactDone=Math.floor(clamp(p*1.12)*artifacts.length);lines.forEach((line,i)=>line.classList.toggle('is-done',i<done));artifacts.forEach((item,i)=>item.classList.toggle('is-done',i<artifactDone));const s=document.querySelector('.agent-status');if(s)s.textContent=done>=lines.length?'Ready to launch':'Running'}
   if(world){const r=world.getBoundingClientRect(),travel=Math.max(1,world.offsetHeight-innerHeight),p=clamp(-r.top/travel);screens.forEach((s,i)=>{const x=+s.dataset.x,y=+s.dataset.y,z=+s.dataset.z;const orbit=(p-.5)*2;s.style.transform=`translate3d(calc(-50% + ${x*(.3+p*.62)}vw),calc(-50% + ${y*(.3+p*.62)}vh),0) scale(${z*(.72+p*.3)}) rotateX(${(y/12)*orbit}deg) rotateY(${(-x/12)*orbit}deg) rotateZ(${(i%2?1:-1)*orbit*2.2}deg)`;s.style.opacity=String(.18+.82*Math.sin(Math.PI*clamp(p*1.15)))})}
  }
  window.__kwinMotion?.register(update);
