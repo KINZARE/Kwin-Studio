@@ -100,6 +100,14 @@ button { color: inherit; }
 .project__visual::after { content:''; position:absolute; inset:0; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); pointer-events:none; }
 .project__visual--warm { background: #b9a38b; color: #16120e; }
 .project__visual--cool { background: #c8e8f5; color: #0b1a21; }
+.project__visual--mono { background: #ece9e2; color: #111; }
+.project__visual--mono .mock-browser { background:#111;color:#f4f2ed; }
+.project__visual--mono .mock-browser__bar { border-color:rgba(255,255,255,.14); }
+.project__visual--mono .mock-site__card { background:#ece9e2; }
+.project__visual--acid { background: #d7ff38; color: #0b0b0b; }
+.project__visual--acid .mock-browser { background:#0b0b0b;color:#f4f2ed; }
+.project__visual--acid .mock-browser__bar { border-color:rgba(255,255,255,.16); }
+.project__visual--acid .mock-site__card { background:#d7ff38; }
 .mock-browser { position: absolute; inset: 9% 7% 6%; border-radius: 2px; background: #f6f4ee; box-shadow: 0 28px 70px rgba(0,0,0,.22); overflow: hidden; }
 .mock-browser__bar { height: 34px; border-bottom: 1px solid rgba(0,0,0,.12); display: flex; align-items:center; gap:6px; padding:0 12px; }
 .mock-dot { width: 5px; height:5px; border-radius:50%; background: currentColor; opacity:.35; }
