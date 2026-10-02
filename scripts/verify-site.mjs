@@ -92,6 +92,19 @@ pass('portal rings avoid animated blend mode',!index.includes('.portal-stack .po
 pass('persistent compositor hints are hero-scoped',index.includes('.hero__orb,\n  .portal-stack .portal-ring,\n  .gateway-plane,\n  .gateway-aperture')&&!index.includes('.statement__copy .motion-word,\n  .section-heading'));
 pass('statement words do not reserve permanent layers',!index.includes('.statement__copy .motion-word{transform-origin:50% 100%;will-change:transform,opacity,filter;color:inherit}'));
 
+
+pass('mobile premium responsive pass present',index.includes('id="mobile-premium-pass"'));
+pass('mobile viewport supports safe areas',index.includes('viewport-fit=cover')&&contact.includes('viewport-fit=cover'));
+pass('touch cards do not depend on hover',index.includes('.brief-card__reveal{transform:none!important'));
+pass('mobile exploration uses horizontal snap track',index.includes('.brief-wall__grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory'));
+pass('mobile generative directions use horizontal snap track',index.includes('.generative-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory'));
+pass('small-screen hero removes excess spatial layers',index.includes('.portal-ring--3,.portal-ring--4,.portal-ring--5,.gateway-plane--back{display:none}'));
+pass('pointer effects only run on fine pointers',index.includes("if(matchMedia('(pointer:fine)').matches){"));
+pass('small-screen world limits animated cards',index.includes('if(innerWidth<621&&i>5)return;'));
+pass('touch copy does not instruct hover',!index.includes('Hover the surfaces.'));
+pass('contact has dedicated mobile pass',contact.includes('id="contact-mobile-premium-pass"'));
+pass('contact fields avoid mobile zoom',contact.includes('font-size:16px'));
+
 if(failures.length){
   console.error('\n'+failures.length+' release gate(s) failed.');
   process.exit(1);
