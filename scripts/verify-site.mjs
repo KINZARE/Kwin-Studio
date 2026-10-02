@@ -59,6 +59,7 @@ pass('studio system has 8 stages',agentLines===8,'found '+agentLines);
 pass('design workbench has at least 7 secondary panels',designPanels>=7,'found '+designPanels);
 pass('project access artifact present',index.includes('PROJECT ACCESS / 2026'));
 pass('adaptive modes are present',index.includes('Fast overview')&&index.includes('Brand story')&&index.includes('Decision mode'));
+pass('new project visual variants are styled',index.includes('.project__visual--mono {')&&index.includes('.project__visual--acid {'));
 
 pass('mobile breakpoint covered',index.includes('@media(max-width:520px)')||index.includes('@media (max-width: 520px)'));
 pass('tablet breakpoint covered',index.includes('@media(max-width:820px)')||index.includes('@media (max-width: 820px)'));
