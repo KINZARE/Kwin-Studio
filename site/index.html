@@ -995,7 +995,8 @@ body{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif}
 </script>
 <script>
 (() => {
-  const b=document.getElementById('menu-trigger'),m=document.getElementById('mobile-menu'),header=document.querySelector('.site-header');\n  window.__kwinMotion?.register(()=>header?.classList.toggle('is-scrolled',scrollY>24));
+  const b=document.getElementById('menu-trigger'),m=document.getElementById('mobile-menu'),header=document.querySelector('.site-header');
+  window.__kwinMotion?.register(()=>header?.classList.toggle('is-scrolled',scrollY>24));
   const setMenu=(open,{returnFocus=false}={})=>{
     if(!b||!m)return;
     m.hidden=!open;
