@@ -49,8 +49,10 @@ pass('contact does not fake success',!/message sent|sent successfully|thanks.*se
 const classCount=name=>(index.match(new RegExp('class="[^"]*\\b'+name+'\\b[^"]*"','g'))||[]).length;
 const brief=classCount('brief-card');
 const floats=classCount('float-screen');
+const studyImages=classCount('study-art');
 pass('exploration wall has at least 12 surfaces',brief>=12,'found '+brief);
 pass('screen world has at least 14 floating surfaces',floats>=14,'found '+floats);
+pass('at least 6 original study images are integrated',studyImages>=6,'found '+studyImages);
 
 pass('mobile breakpoint covered',index.includes('@media(max-width:520px)')||index.includes('@media (max-width: 520px)'));
 pass('tablet breakpoint covered',index.includes('@media(max-width:820px)')||index.includes('@media (max-width: 820px)'));
