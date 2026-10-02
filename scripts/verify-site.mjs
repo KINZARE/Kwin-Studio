@@ -77,6 +77,7 @@ pass('post-agent process spacing is compact',index.includes('.agent-scene + .sec
 pass('studio statement height is compact',index.includes('.studio-statement { min-height: 68svh;'));
 pass('pre-screen capabilities spacing is compact',index.includes('.studio-statement + .section{padding-block:clamp(72px,8vw,120px)}'));
 pass('floating screens stay visible through late scroll',index.includes("const visibility=Math.min(clamp(p/.12),clamp((1-p)/.08));"));
+pass('screen world animation starts before sticky lock',index.includes('const entryLead=innerHeight*.82,p=clamp((entryLead-r.top)/(entryLead+travel));'));
 
 if(failures.length){
   console.error('\n'+failures.length+' release gate(s) failed.');
