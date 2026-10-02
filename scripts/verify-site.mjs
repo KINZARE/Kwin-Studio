@@ -119,6 +119,23 @@ pass('mobile menu is exposed as modal navigation',index.includes('role="dialog"'
 pass('contact taste refinement present',contact.includes('id="contact-taste-refinement"'));
 pass('contact primary action uses brand accent',contact.includes('.btn{background:#d7ff38;color:#090909'));
 
+
+pass('homepage language matches English content',index.startsWith('<!doctype html><html lang="en">'));
+pass('homepage primary navigation is labelled',index.includes('<nav class="desktop-nav" aria-label="Primary navigation">'));
+pass('mobile navigation links are labelled',index.includes('<nav aria-label="Mobile navigation links">'));
+pass('menu control language matches homepage',index.includes("b.setAttribute('aria-label',open?'Close menu':'Open menu')"));
+pass('hero positions Kwin as a website studio',index.includes('designs and builds premium websites for ambitious businesses'));
+pass('digital-experience positioning removed',!/premium digital experience/i.test(index));
+pass('service naming is concrete',index.includes('<h3>UX/UI Design</h3>')&&index.includes('<h3>Interactive Development</h3>'));
+pass('direction explorer avoids fake AI language',!index.includes('Regenerate')&&index.includes('Explore variation'));
+pass('direction explorer is deterministic',!index.includes('Math.random()')&&index.includes('data-variant-index'));
+pass('studio delivery demo is website-specific',index.includes('Build a premium website for a modern AI brand.'));
+pass('studio delivery status is stage based',index.includes("s.textContent=done>=lines.length?'8 / 8 stages':'Stage '+Math.max(1,done)+' / 8'"));
+pass('release performance pass present',index.includes('id="release-performance-pass"'));
+pass('offscreen non-sticky sections use content visibility',index.includes('content-visibility:auto')&&index.includes('contain-intrinsic-size'));
+pass('mobile horizontal tracks use touch ergonomics',index.includes('scroll-snap-stop:always')&&index.includes('touch-action:pan-x'));
+pass('mobile screen world selector matches six-card limit',index.includes('.screen-world__sticky>.float-screen:nth-child(n+8){display:none!important}')&&!index.includes('div.float-screen:nth-of-type(n+8)'));
+
 if(failures.length){
   console.error('\n'+failures.length+' release gate(s) failed.');
   process.exit(1);
