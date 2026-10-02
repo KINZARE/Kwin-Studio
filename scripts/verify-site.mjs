@@ -105,6 +105,20 @@ pass('touch copy does not instruct hover',!index.includes('Hover the surfaces.')
 pass('contact has dedicated mobile pass',contact.includes('id="contact-mobile-premium-pass"'));
 pass('contact fields avoid mobile zoom',contact.includes('font-size:16px'));
 
+
+pass('taste refinement layer present',index.includes('id="taste-refinement-pass"'));
+pass('hero has one explicit primary action',index.includes('class="text-link hero-primary-cta"'));
+pass('header refinement uses shared motion coordinator',index.includes("header?.classList.toggle('is-scrolled',scrollY>24)"));
+pass('taste pass does not add extra scroll listeners',(index.match(/addEventListener\(['"]scroll['"]/g)||[]).length===1);
+pass('cinematic loader is session scoped',index.includes("sessionStorage.getItem('kwin-loader-seen')"));
+pass('repeat visits skip the loader',index.includes("if(loaderSeen){loader?.remove();dispatchEvent(new Event('kwin:loaded'));return;}"));
+pass('mobile exploration trims excess surfaces',index.includes('.brief-card:nth-child(n+9){display:none}'));
+pass('fake credit state removed',!index.includes('Out of credits'));
+pass('marketing headings use balanced wrapping',index.includes('text-wrap:balance'));
+pass('mobile menu is exposed as modal navigation',index.includes('role="dialog"')&&index.includes('aria-modal="true"'));
+pass('contact taste refinement present',contact.includes('id="contact-taste-refinement"'));
+pass('contact primary action uses brand accent',contact.includes('.btn{background:#d7ff38;color:#090909'));
+
 if(failures.length){
   console.error('\n'+failures.length+' release gate(s) failed.');
   process.exit(1);

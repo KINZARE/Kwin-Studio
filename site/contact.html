@@ -23,4 +23,29 @@
   .main{padding-top:48px}
   .intro h1{font-size:clamp(50px,15vw,64px)}
 }
+</style><style id="contact-taste-refinement">
+:root{--accent:#d7ff38;--line:#2b2b2b;--muted:#9d9a94}
+body{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif}
+.head{height:78px;border-bottom-color:var(--line)}
+.brand{font-size:16px;letter-spacing:-.035em}
+.main{padding:clamp(72px,9vh,118px) 0}
+.grid{align-items:start}
+.intro h1{text-wrap:balance;max-width:8ch}
+.intro p{font-size:16px;line-height:1.6;max-width:46ch}
+.form{gap:20px}
+.field span{color:var(--muted)}
+input,select,textarea{border:0;border-bottom:1px solid #363636;background:transparent;padding:14px 0;transition:border-color .2s ease}
+input:hover,select:hover,textarea:hover{border-bottom-color:#666}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:#f4f0e8}
+.btn{background:#d7ff38;color:#090909;border:1px solid #d7ff38;min-height:54px;padding:16px 18px;transition:background-color .2s ease,border-color .2s ease}
+.btn:hover,.btn:focus-visible{background:#f4f0e8;border-color:#f4f0e8}
+.status{border-left:1px solid #3a3a3a;padding-left:12px;color:#aaa}
+@media(max-width:760px){
+  .head{height:68px}
+  .main{padding:56px 0 72px}
+  .grid{gap:42px}
+  .intro h1{font-size:clamp(52px,14vw,72px)}
+  .btn{width:100%}
+}
+@media(prefers-reduced-motion:reduce){input,select,textarea,.btn{transition:none}}
 </style></head><body><header><div class="shell head"><a class="brand" href="/">KWIN STUDIO</a><nav class="nav"><a href="/#work">Work</a><a href="/#services">Services</a><a href="/#studio">Studio</a></nav></div></header><main class="main"><div class="shell grid"><section class="intro"><div class="eyebrow">Start a project</div><h1>Tell me what you want to build.</h1><p>Een nieuwe website, redesign of interactieve ervaring? Deel de basis. Kwin Studio bouwt premium websites van strategie tot livegang.</p></section><form class="form" id="form"><div class="row"><label class="field"><span>Naam</span><input name="name" autocomplete="name" required></label><label class="field"><span>E-mail</span><input type="email" name="email" autocomplete="email" inputmode="email" required></label></div><div class="row"><label class="field"><span>Bedrijf</span><input name="company" autocomplete="organization"></label><label class="field"><span>Huidige website</span><input type="text" name="website" autocomplete="url" inputmode="url" placeholder="jouwdomein.nl"></label></div><div class="row"><label class="field"><span>Project</span><select name="project"><option>Nieuwe website</option><option>Website redesign</option><option>Ecommerce</option><option>Interactive website</option></select></label><label class="field"><span>Budget</span><select name="budget"><option>€2.5k–€5k</option><option>€5k–€10k</option><option>€10k+</option></select></label></div><label class="field"><span>Wat wil je bereiken?</span><textarea name="message" required></textarea></label><button class="btn" type="submit">Send project inquiry ↗</button><div class="status" id="status" role="status" aria-live="polite">Preview mode: verzending is nog niet gekoppeld. Gebruik deze pagina nog niet voor echte aanvragen.</div></form></div></main><footer><div class="shell footer"><span>© 2026 Kwin Studio</span><span>Websites built to stand out.</span></div></footer><script>document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('status').textContent='Nog niet verzonden: e-maildelivery moet vóór productie worden gekoppeld.';});</script></body></html>
