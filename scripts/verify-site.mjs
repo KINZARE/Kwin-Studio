@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 
-const index=fs.readFileSync(new URL('../site/index.html', import.meta.url),'utf8');
-const contact=fs.readFileSync(new URL('../site/contact.html', import.meta.url),'utf8');
+const index=fs.readFileSync('site/index.html','utf8');
+const contact=fs.readFileSync('site/contact.html','utf8');
 
 const failures=[];
 const pass=(label,condition,detail='')=>{
