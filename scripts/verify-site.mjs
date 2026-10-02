@@ -120,6 +120,9 @@ pass('contact taste refinement present',contact.includes('id="contact-taste-refi
 pass('contact primary action uses brand accent',contact.includes('.btn{background:#d7ff38;color:#090909'));
 
 
+pass('contact language matches site language',contact.startsWith('<!doctype html><html lang="en">'));
+pass('contact navigation is labelled',contact.includes('<nav class="nav" aria-label="Contact navigation">'));
+pass('contact copy is consistently English',contact.includes('<span>Name</span>')&&contact.includes('<span>Email</span>')&&!contact.includes('Een nieuwe website'));
 pass('homepage language matches English content',index.startsWith('<!doctype html><html lang="en">'));
 pass('homepage primary navigation is labelled',index.includes('<nav class="desktop-nav" aria-label="Primary navigation">'));
 pass('mobile navigation links are labelled',index.includes('<nav aria-label="Mobile navigation links">'));
