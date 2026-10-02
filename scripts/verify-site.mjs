@@ -63,6 +63,17 @@ pass('new project visual variants are styled',index.includes('.project__visual--
 
 pass('mobile breakpoint covered',index.includes('@media(max-width:520px)')||index.includes('@media (max-width: 520px)'));
 pass('tablet breakpoint covered',index.includes('@media(max-width:820px)')||index.includes('@media (max-width: 820px)'));
+pass('selected work scroll span is compact',index.includes('#work{height:300svh}'));
+pass('transform scene scroll span is compact',index.includes('.transform{min-height:155svh}'));
+pass('brief wall padding is compact',index.includes('.brief-wall{padding:clamp(84px,10vw,150px) 0}'));
+pass('brief wall intro gap is compact',index.includes('margin-bottom:46px'));
+pass('brief wall grid tail is compact',index.includes('.brief-wall__grid{min-height:190vh}'));
+pass('generative scene spacing is compact',index.includes('.generative-scene{padding:clamp(88px,11vw,168px) 0'));
+pass('adaptive scene scroll span is compact',index.includes('.adaptive-demo{min-height:155vh}'));
+pass('studio system spacing is compact',index.includes('.agent-scene{padding:clamp(88px,11vw,168px) 0}'));
+pass('screen world scroll span is compact',index.includes('.screen-world{min-height:175vh}'));
+pass('project access spacing is compact',index.includes('.project-pass-scene{padding:clamp(88px,10vw,150px) 0}'));
+pass('floating screens stay visible through late scroll',index.includes("const visibility=Math.min(clamp(p/.12),clamp((1-p)/.08));"));
 
 if(failures.length){
   console.error('\n'+failures.length+' release gate(s) failed.');
