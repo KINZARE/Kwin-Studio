@@ -77,7 +77,7 @@ pass('post-agent process spacing is compact',index.includes('.agent-scene + .sec
 pass('studio statement height is compact',index.includes('.studio-statement { min-height: 68svh;'));
 pass('pre-screen capabilities spacing is compact',index.includes('.studio-statement + .section{padding-block:clamp(72px,8vw,120px)}'));
 pass('floating screens stay visible through late scroll',index.includes("const visibility=Math.min(clamp(p/.12),clamp((1-p)/.08));"));
-pass('global scroll trigger is 60 percent',index.includes('window.__kwinMotion={trigger:.60,register(fn){callbacks.add(fn);request()},request}'));
+pass('global scroll trigger is 60 percent',index.includes('window.__kwinMotion={trigger:.60,isNear,register(fn){callbacks.add(fn);request()},request}'));
 pass('general motion uses shared 60 percent trigger',index.includes('const viewportTrigger=window.__kwinMotion?.trigger??.60;'));
 pass('screen world uses shared 60 percent trigger',index.includes('const entryLead=innerHeight*viewportTrigger,p=clamp((entryLead-r.top)/(entryLead+travel));'));
 const heroRingOwners=(index.match(/heroRings\.forEach/g)||[]).length;
