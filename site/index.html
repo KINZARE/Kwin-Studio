@@ -241,16 +241,12 @@ button { color: inherit; }
   .hero__headline,
   .hero__actions,
   .hero__scroll,
-  .statement__copy .motion-word,
-  .section-heading,
-  .project__visual,
-  .project__copy,
-  .service-row,
-  .process-step,
-  .studio-lines > div,
-  .capability-cloud span,
-  .project-cta__title,
-  .project-cta__link { will-change: transform, opacity; }
+  .hero__orb,
+  .portal-stack .portal-ring,
+  .gateway-plane,
+  .gateway-aperture,
+  #work .projects,
+  .motion-cursor { will-change: transform, opacity; }
 
   .portal-ring {
     position:absolute;
@@ -307,7 +303,7 @@ button { color: inherit; }
 
 <style id="extreme-motion-v2">
   html,body{max-width:100%;overflow-x:hidden}
-  :root{--velocity:0;--pointer-x:50vw;--pointer-y:50vh}
+  :root{--velocity:0}
   .portal-stack{position:absolute;inset:0;z-index:-1;pointer-events:none;perspective:1200px;overflow:clip}
   .portal-stack .portal-ring{top:42%;left:50%;width:min(30vw,440px);opacity:.54;transform-origin:center;backface-visibility:hidden}
   .portal-stack .portal-ring::before{inset:7%}.portal-stack .portal-ring::after{inset:18%}
@@ -320,7 +316,7 @@ button { color: inherit; }
   .motion-cursor.is-hot{width:74px;height:74px;background:rgba(255,255,255,.18);border-color:transparent}
   .motion-cursor.is-project{width:110px;height:110px;border-color:rgba(215,255,56,.8);background:rgba(215,255,56,.08)}
   .statement__copy{perspective:900px}
-  .statement__copy .motion-word{transform-origin:50% 100%;will-change:transform,opacity,filter;color:inherit}
+  .statement__copy .motion-word{transform-origin:50% 100%;color:inherit}
   #work{position:relative;overflow:clip}
   #work .projects{will-change:transform}
   .project{perspective:1400px}
