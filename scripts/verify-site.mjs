@@ -89,6 +89,8 @@ pass('portal scenes gate offscreen work',index.includes("if(briefWall&&isNear(br
 pass('desktop hero avoids animated backdrop filter',!index.includes('backdrop-filter:blur(1px)'));
 pass('hero pointer glow is no longer mouse-position repainted',!index.includes('circle at var(--pointer-x) var(--pointer-y)'));
 pass('portal rings avoid animated blend mode',!index.includes('.portal-stack .portal-ring{top:42%;left:50%;width:min(30vw,440px);opacity:.54;transform-origin:center;mix-blend-mode:screen}'));
+pass('persistent compositor hints are hero-scoped',index.includes('.hero__orb,\n  .portal-stack .portal-ring,\n  .gateway-plane,\n  .gateway-aperture')&&!index.includes('.statement__copy .motion-word,\n  .section-heading'));
+pass('statement words do not reserve permanent layers',!index.includes('.statement__copy .motion-word{transform-origin:50% 100%;will-change:transform,opacity,filter;color:inherit}'));
 
 if(failures.length){
   console.error('\n'+failures.length+' release gate(s) failed.');
