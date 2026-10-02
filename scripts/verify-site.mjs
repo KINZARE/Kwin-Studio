@@ -122,6 +122,7 @@ pass('contact primary action uses brand accent',contact.includes('.btn{backgroun
 
 pass('contact language matches site language',contact.startsWith('<!doctype html><html lang="en">'));
 pass('contact navigation is labelled',contact.includes('<nav class="nav" aria-label="Contact navigation">'));
+pass('contact placeholder matches English copy',contact.includes('placeholder="yourdomain.com"'));
 pass('contact copy is consistently English',contact.includes('<span>Name</span>')&&contact.includes('<span>Email</span>')&&!contact.includes('Een nieuwe website'));
 pass('homepage language matches English content',index.startsWith('<!doctype html><html lang="en">'));
 pass('homepage primary navigation is labelled',index.includes('<nav class="desktop-nav" aria-label="Primary navigation">'));
@@ -129,7 +130,8 @@ pass('mobile navigation links are labelled',index.includes('<nav aria-label="Mob
 pass('menu control language matches homepage',index.includes("b.setAttribute('aria-label',open?'Close menu':'Open menu')"));
 pass('hero positions Kwin as a website studio',index.includes('designs and builds premium websites for ambitious businesses'));
 pass('digital-experience positioning removed',!/premium digital experience/i.test(index));
-pass('service naming is concrete',index.includes('<h3>UX/UI Design</h3>')&&index.includes('<h3>Interactive Development</h3>'));
+pass('service naming is concrete',index.includes('<h3>Website Strategy</h3>')&&index.includes('<h3>UX/UI Design</h3>')&&index.includes('<h3>Website Development</h3>')&&index.includes('<h3>Interactive Development</h3>'));
+pass('direction explorer avoids generator metaphors',!/generator|Generating…/i.test(index));
 pass('direction explorer avoids fake AI language',!index.includes('Regenerate')&&index.includes('Explore variation'));
 pass('direction explorer is deterministic',!index.includes('Math.random()')&&index.includes('data-variant-index'));
 pass('studio delivery demo is website-specific',index.includes('Build a premium website for a modern AI brand.'));
