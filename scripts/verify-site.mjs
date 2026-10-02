@@ -50,9 +50,15 @@ const classCount=name=>(index.match(new RegExp('class="[^"]*\\b'+name+'\\b[^"]*"
 const brief=classCount('brief-card');
 const floats=classCount('float-screen');
 const studyImages=classCount('study-art');
+const agentLines=classCount('agent-line');
+const designPanels=classCount('design-stack__panel');
 pass('exploration wall has at least 12 surfaces',brief>=12,'found '+brief);
 pass('screen world has at least 14 floating surfaces',floats>=14,'found '+floats);
 pass('at least 6 original study images are integrated',studyImages>=6,'found '+studyImages);
+pass('studio system has 8 stages',agentLines===8,'found '+agentLines);
+pass('design workbench has at least 7 secondary panels',designPanels>=7,'found '+designPanels);
+pass('project access artifact present',index.includes('PROJECT ACCESS / 2026'));
+pass('adaptive modes are present',index.includes('Fast overview')&&index.includes('Brand story')&&index.includes('Decision mode'));
 
 pass('mobile breakpoint covered',index.includes('@media(max-width:520px)')||index.includes('@media (max-width: 520px)'));
 pass('tablet breakpoint covered',index.includes('@media(max-width:820px)')||index.includes('@media (max-width: 820px)'));
