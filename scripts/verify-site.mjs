@@ -73,6 +73,9 @@ pass('adaptive scene scroll span is compact',index.includes('.adaptive-demo{min-
 pass('studio system spacing is compact',index.includes('.agent-scene{padding:clamp(88px,11vw,168px) 0}'));
 pass('screen world scroll span is compact',index.includes('.screen-world{min-height:175vh}'));
 pass('project access spacing is compact',index.includes('.project-pass-scene{padding:clamp(88px,10vw,150px) 0}'));
+pass('post-agent process spacing is compact',index.includes('.agent-scene + .section{padding-block:clamp(72px,8vw,120px)}'));
+pass('studio statement height is compact',index.includes('.studio-statement { min-height: 68svh;'));
+pass('pre-screen capabilities spacing is compact',index.includes('.studio-statement + .section{padding-block:clamp(72px,8vw,120px)}'));
 pass('floating screens stay visible through late scroll',index.includes("const visibility=Math.min(clamp(p/.12),clamp((1-p)/.08));"));
 
 if(failures.length){
