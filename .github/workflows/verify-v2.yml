@@ -1,0 +1,38 @@
+name: Verify Kwin Studio V2
+
+on:
+  push:
+    branches: [feat/kwin-studio-v2]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Apply idempotent homepage route patch
+        if: github.event_name == 'push'
+        run: node scripts/patch-home-v2.mjs
+      - name: Commit homepage patch when needed
+        if: github.event_name == 'push'
+        run: |
+          if ! git diff --quiet -- site/index.html; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add site/index.html
+            git commit -m "feat: connect homepage to Kwin Studio V2 routes"
+            git push
+          fi
+      - name: Verify Portal regression gates
+        run: node scripts/verify-site.mjs
+      - name: Verify V2 release gates
+        run: node scripts/verify-v2.mjs
