@@ -78,11 +78,9 @@ try{
     const reveals=page.locator('[data-reveal]');
     const revealCount=await reveals.count();
     for(let i=0;i<revealCount;i++){
-      await reveals.nth(i).scrollIntoViewIfNeeded();
-      await page.waitForTimeout(80);
+      await reveals.nth(i).evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest'}));
+      await page.waitForTimeout(100);
     }
-    await page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));
-    await page.waitForTimeout(120);
     const hiddenReveal=await page.evaluate(()=>[...document.querySelectorAll('[data-reveal]')].filter(el=>getComputedStyle(el).opacity==='0').map(el=>(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,70)));
     pass(`${width}px home: scroll reveals complete`,hiddenReveal.length===0,hiddenReveal.join(' | '));
 
