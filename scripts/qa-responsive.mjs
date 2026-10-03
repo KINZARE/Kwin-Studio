@@ -75,11 +75,16 @@ try{
     }
 
     await page.goto(base+'/',{waitUntil:'networkidle'});
+    await page.addStyleTag({content:'html{scroll-behavior:auto!important}'});
     const reveals=page.locator('[data-reveal]');
     const revealCount=await reveals.count();
     for(let i=0;i<revealCount;i++){
-      await reveals.nth(i).evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest'}));
-      await page.waitForTimeout(100);
+      await reveals.nth(i).evaluate((el)=>{
+        const rect=el.getBoundingClientRect();
+        const target=Math.max(0,window.scrollY+rect.top-(window.innerHeight-rect.height)/2);
+        window.scrollTo(0,target);
+      });
+      await page.waitForTimeout(140);
     }
     const hiddenReveal=await page.evaluate(()=>[...document.querySelectorAll('[data-reveal]')].filter(el=>getComputedStyle(el).opacity==='0').map(el=>(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,70)));
     pass(`${width}px home: scroll reveals complete`,hiddenReveal.length===0,hiddenReveal.join(' | '));
