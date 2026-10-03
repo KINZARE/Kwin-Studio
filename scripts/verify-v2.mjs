@@ -58,9 +58,9 @@ pass('studio includes quality principles',/quality principles/i.test(studio));
 for(const field of ['name="name"','name="email"','name="company"','name="website"','name="project"','name="change"','name="budget"','name="timing"']) pass(`contact has field ${field}`,contact.includes(field));
 for(const band of ['€10k–€25k','€25k–€50k','€50k–€100k','€100k+','Not sure yet']) pass(`contact has budget band ${band}`,contact.includes(band));
 pass('contact has validation/status semantics',contact.includes('aria-live="polite"')&&contact.includes('role="status"'));
-pass('contact has duplicate-submit guard',/submitting|dataset\.submitting|isSubmitting/i.test(contact));
-pass('contact does not fake success',!/message sent|sent successfully|thanks.*sent|inquiry received/i.test(contact));
-pass('contact exposes honest delivery state',/not connected|not sent|delivery.*connected/i.test(contact));
+pass('contact has duplicate-submit guard',/isSubmitting|dataset\.submitting|submitting/i.test(contact+sharedJs));
+pass('contact does not fake success',!/message sent|sent successfully|thanks.*sent|inquiry received/i.test(contact+sharedJs));
+pass('contact exposes honest delivery state',/not connected|not sent|delivery.*connected/i.test(contact+sharedJs));
 
 pass('404 has branded recovery',/Kwin Studio/i.test(error404)&&/Back to home|Return home|Go home/i.test(error404));
 pass('robots keeps preview blocked',/Disallow:\s*\//i.test(robots));
