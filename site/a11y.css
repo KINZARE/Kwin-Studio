@@ -1,0 +1,3 @@
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.menu-trigger{min-width:48px;min-height:48px;align-items:center;justify-content:center;padding:10px}
+@media (max-width:840px){.menu-trigger{display:flex}}
