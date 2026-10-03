@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const required = [
-  'site/index.html','site/styles.css','site/app.js','site/work/index.html',
+  'site/index.html','site/styles.css','site/a11y.css','site/app.js','site/work/index.html',
   'site/work/portal-v2/index.html','site/work/adaptive-brand-system/index.html',
   'site/work/spatial-interface-study/index.html','site/services/index.html',
   'site/studio/index.html','site/contact/index.html','site/404.html',
@@ -42,10 +42,14 @@ pass('CSS has warm paper token',css.includes('--paper:#f0ede6'));
 pass('CSS has 320 mobile handling',css.includes('@media (max-width: 520px)'));
 pass('CSS has tablet handling',css.includes('@media (max-width: 840px)'));
 pass('CSS has reduced-motion handling',css.includes('prefers-reduced-motion: reduce'));
+const a11y=read('site/a11y.css');
+pass('CSS exposes a global visible focus ring',a11y.includes(':focus-visible{outline:'));
+pass('Mobile menu trigger meets touch target baseline',a11y.includes('min-width:48px')&&a11y.includes('min-height:48px'));
 pass('CSS avoids glassmorphism blur',!css.includes('backdrop-filter'));
 pass('CSS avoids giant fixed min widths',!/(min-width:\s*(?:[5-9]\d\d|\d{4,})px)/.test(css));
 
 const js=read('site/app.js');
+pass('A11y stylesheet is loaded by shared JS',js.includes('/a11y.css'));
 pass('JS parses',(()=>{try{new Function(js);return true}catch{return false}})());
 pass('JS uses IntersectionObserver',js.includes('IntersectionObserver'));
 pass('JS exposes Escape-close nav',js.includes("event.key === 'Escape'"));

@@ -3,7 +3,6 @@ name: Verify Kwin Studio
 on:
   pull_request:
   push:
-    branches: [main, feat/kwin-studio-v2]
 
 permissions:
   contents: read

@@ -1,5 +1,9 @@
 (()=>{
   'use strict';
+  const a11yStyles=document.createElement('link');
+  a11yStyles.rel='stylesheet';
+  a11yStyles.href='/a11y.css';
+  document.head.append(a11yStyles);
   const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
   const header=document.querySelector('[data-site-header]');
   const trigger=document.querySelector('[data-menu-trigger]');
