@@ -1,26 +1,44 @@
 # Kwin Studio
 
-Kwin Studio is a premium, motion-led studio website inspired by futuristic editorial web experiences.
+Kwin Studio is an independent digital flagship studio website built as a lightweight static multi-page experience.
 
-## Current preview
+## Architecture
 
-The current public preview is a self-contained static build served from `site/` on Render.
+The existing static architecture is deliberately retained. The public site is served from `site/` on Render. Shared visual and interaction behavior lives in:
 
-- Homepage: `site/index.html`
-- Contact: `site/contact.html`
-- Hosting: Render Static Site
-- Source of truth: `main`
+- `site/styles.css`
+- `site/app.js`
 
-## Release status
+Primary routes:
 
-The visual preview is intentionally marked `noindex,nofollow` until production launch.
+- `/` — Home
+- `/work/` — selected work
+- `/work/*` — transparent self-initiated/concept case studies
+- `/services/`
+- `/studio/`
+- `/contact/`
+- `/privacy/`
+- `/404.html`
 
-Before production:
-1. Connect real contact-form delivery.
-2. Remove the preview-only `noindex,nofollow` metadata.
-3. Attach the production domain.
-4. Run the pre-launch verification checklist again.
+## Verification
 
-## Motion and accessibility
+Run:
 
-The site includes scroll-driven motion, responsive fallbacks, `prefers-reduced-motion` support, keyboard-accessible navigation, and a cinematic loading experience.
+```bash
+node scripts/verify-site.mjs
+```
+
+The verification script checks route coverage, metadata, navigation, responsive/reduced-motion foundations, transparent proof language and the contact preview safety gate.
+
+## Preview release state
+
+The Render preview remains `noindex,nofollow`. The contact form intentionally does not report success until real transactional delivery is connected through a verified sending domain.
+
+Production release blockers:
+
+1. Connect and verify a production sending domain for contact enquiries.
+2. Implement server-side/edge delivery with rate limiting, validation and duplicate protection.
+3. Run real end-to-end contact delivery testing.
+4. Attach the final production domain and replace preview canonicals.
+5. Remove preview `noindex,nofollow` only after the production domain is verified.
+6. Run browser, accessibility, mobile and performance smoke tests against the live production URL.
