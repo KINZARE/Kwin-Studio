@@ -45,11 +45,12 @@ pass('CSS has reduced-motion handling',css.includes('prefers-reduced-motion: red
 const a11y=read('site/a11y.css');
 pass('CSS exposes a global visible focus ring',a11y.includes(':focus-visible{outline:'));
 pass('Mobile menu trigger meets touch target baseline',a11y.includes('min-width:48px')&&a11y.includes('min-height:48px'));
+pass('Accessibility CSS is imported by shared CSS',/^@import url\(['"]\/a11y\.css['"]\);/m.test(css));
 pass('CSS avoids glassmorphism blur',!css.includes('backdrop-filter'));
 pass('CSS avoids giant fixed min widths',!/(min-width:\s*(?:[5-9]\d\d|\d{4,})px)/.test(css));
 
 const js=read('site/app.js');
-pass('A11y stylesheet is loaded by shared JS',js.includes('/a11y.css'));
+pass('JS does not inject accessibility CSS',!js.includes('/a11y.css'));
 pass('JS parses',(()=>{try{new Function(js);return true}catch{return false}})());
 pass('JS uses IntersectionObserver',js.includes('IntersectionObserver'));
 pass('JS exposes Escape-close nav',js.includes("event.key === 'Escape'"));
