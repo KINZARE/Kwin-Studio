@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Preview environment. Remove Disallow only after production domain and release gates are complete.
+Sitemap: https://kwin-studio-preview.onrender.com/sitemap.xml
