@@ -36,12 +36,13 @@ try{
 
       const headings=page.locator('h1,h2,h3:visible');
       const headingCount=await headings.count();
-      let clippedHeadings=0;
+      const clippedHeadings=[];
       for(let i=0;i<headingCount;i++){
-        const box=await headings.nth(i).boundingBox();
-        if(box&&(box.x<-2||box.x+box.width>width+2))clippedHeadings++;
+        const el=headings.nth(i);
+        const box=await el.boundingBox();
+        if(box&&(box.x<-2||box.x+box.width>width+2))clippedHeadings.push((await el.innerText()).trim().replace(/\s+/g,' ').slice(0,90));
       }
-      pass(`${width}px ${route}: headings fit viewport`,clippedHeadings===0,`clipped=${clippedHeadings}`);
+      pass(`${width}px ${route}: headings fit viewport`,clippedHeadings.length===0,clippedHeadings.join(' | '));
 
       if(width<=840){
         const trigger=page.locator('[data-menu-trigger]');
@@ -74,13 +75,16 @@ try{
     }
 
     await page.goto(base+'/',{waitUntil:'networkidle'});
-    const scrollHeight=await page.evaluate(()=>document.documentElement.scrollHeight);
-    for(let y=0;y<scrollHeight;y+=Math.max(280,Math.floor(900*.65))){
-      await page.evaluate(value=>window.scrollTo(0,value),y);
-      await page.waitForTimeout(35);
+    const reveals=page.locator('[data-reveal]');
+    const revealCount=await reveals.count();
+    for(let i=0;i<revealCount;i++){
+      await reveals.nth(i).scrollIntoViewIfNeeded();
+      await page.waitForTimeout(80);
     }
-    const hiddenReveal=await page.evaluate(()=>[...document.querySelectorAll('[data-reveal]')].filter(el=>getComputedStyle(el).opacity==='0').length);
-    pass(`${width}px home: scroll reveals complete`,hiddenReveal===0,`hidden=${hiddenReveal}`);
+    await page.evaluate(()=>window.scrollTo(0,document.documentElement.scrollHeight));
+    await page.waitForTimeout(120);
+    const hiddenReveal=await page.evaluate(()=>[...document.querySelectorAll('[data-reveal]')].filter(el=>getComputedStyle(el).opacity==='0').map(el=>(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,70)));
+    pass(`${width}px home: scroll reveals complete`,hiddenReveal.length===0,hiddenReveal.join(' | '));
 
     if(width===390){
       await page.emulateMedia({reducedMotion:'reduce'});
